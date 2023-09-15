@@ -68,7 +68,9 @@ class DiscountCodeController extends Controller
      */
     public function edit(DiscountCode $discountCode)
     {
-        //
+        $users = User::get();
+
+        return view('admin.DiscountCode.edit',compact('discountCode','users'));
     }
 
     /**
@@ -76,7 +78,27 @@ class DiscountCodeController extends Controller
      */
     public function update(UpdateDiscountCodeRequest $request, DiscountCode $discountCode)
     {
-        //
+        $inputs = $request->all();
+
+        if($request->type == 0)
+        {
+            $inputs['user_id'] = null;
+        }
+
+        if($request->amount_type == 1)
+        {
+            $inputs['discount_celing'] = null;
+        }
+
+        $realTimeStart = substr($inputs['start_date'], 0, 10);
+        $inputs['start_date'] = date('Y-m-d H:i:s', (int)$realTimeStart);
+
+        $realTimeEnd = substr($inputs['end_date'], 0, 10);
+        $inputs['end_date'] = date('Y-m-d H:i:s', (int)$realTimeEnd);
+
+        
+        $discountCode->update($inputs);
+        return redirect()->route('admin.discount-code.index')->with('swal-success', ' کد تخفیف با موفقیت ویرایش شد');
     }
 
     /**
@@ -84,6 +106,7 @@ class DiscountCodeController extends Controller
      */
     public function destroy(DiscountCode $discountCode)
     {
-        //
+        $discountCode->delete();
+        return back()->with('swal-success', ' کد تخفیف با موفقیت حذف شد');
     }
 }

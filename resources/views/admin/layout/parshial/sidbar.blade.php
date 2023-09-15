@@ -17,4 +17,7 @@
     <section class="sidebar-link">
         <a href="{{ route('admin.comment.index') }}">Comment</a>
     </section>
+    <section class="sidebar-link">
+        <a href="{{ route('admin.banners.index') }}">Banners</a>
+    </section>
 </section>

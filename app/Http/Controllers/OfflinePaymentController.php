@@ -27,7 +27,16 @@ class OfflinePaymentController extends Controller
             }
         }
         $cartItemCount = $user->cart->cartItems->count();
-        return view('app.payment', compact('cartItemCount', 'total', 'cart'));
+        $totalDiscount = $total;
+        if($cart->discount_amount != null && $cart->discount_code != null)
+        {
+            $totalDiscount = (int)$total - (int)$cart->discount_amount;
+
+            if($totalDiscount < 0) {
+                $totalDiscount = 0;
+            }
+        }
+        return view('app.payment', compact('cartItemCount', 'total', 'cart','totalDiscount'));
     }
 
     /**

@@ -37,9 +37,9 @@
                     <td>{{ $DiscountCode->start_date }}</td>
                     <td>{{ $DiscountCode->end_date }}</td>
                     <td class="d-flex">
-                        <a href="{{ route('admin.product.edit',$DiscountCode) }}" class="btn btn-info btn-sm">Edit</a>
+                        <a href="{{ route('admin.discount-code.edit',$DiscountCode) }}" class="btn btn-info btn-sm">Edit</a>
 
-                        <form action="{{ route('admin.product.destroy',$DiscountCode) }}" method="post">
+                        <form action="{{ route('admin.discount-code.destroy',$DiscountCode) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm ml-2">Delete</button>

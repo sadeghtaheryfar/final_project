@@ -6,7 +6,10 @@ use App\Models\Cart;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\CartItem;
+use App\Models\DiscountCode;
+use Illuminate\Http\Request;
 use App\Http\Services\totalPrice;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Services\relatedProduct;
 use App\Http\Requests\StoreCartRequest;
 use App\Http\Services\favouriteProduct;
@@ -80,5 +83,56 @@ class CartController extends Controller
     {
         $cart->delete();
         return back()->with('swal-success', 'سبد خرید با موفقیت حذف شد .');
+    }
+
+    public function discountCode(Request $request, totalPrice $totalPrice)
+    {
+        $inputs = $request->all();
+
+        $user = auth()->user();
+        $cart = $user->cart;
+
+        $request->validate(
+            ['code' => 'required']
+        );
+
+        $code = DiscountCode::where(['code' => $inputs['code'], ['start_date', '<' , now()], ['end_date', '>' , now()]])->first();
+
+        if($code != null)
+        {
+            if($code->type == 1)
+            {
+                if($code->user_id == Auth::user()->id)
+                {
+                    $code = DiscountCode::where(['code' => $inputs['code'], ['start_date', '<' , now()], ['end_date', '>' , now()],['user_id' , Auth::user()->id]])->first();
+                }else{
+                    
+                    return back()->with('swal-error', 'کد تخفیف وارد شده معتبر نمی باشد .');
+                    exit();
+                }
+            }
+        }else{
+            return back()->with('swal-error', 'کد تخفیف وارد شده معتبر نمی باشد .');
+            exit();
+        }
+
+        $total = $totalPrice->totalprice($cart);
+
+        if($code->amount_type == 0)
+        {
+            $totalDiscountAmount = $total * ($code->amount / 100);
+            if($code->discount_celing != null && $totalDiscountAmount > $code->discount_celing)
+            {
+                $totalDiscountAmount = $code->discount_celing;
+            }
+        }else{
+            $totalDiscountAmount = $code->amount;
+        }
+
+        $cart->update(['discount_amount' =>  $totalDiscountAmount]);
+        $cart->update(['discount_code' =>  $request->code]);
+        $cart->save();
+        return back()->with('swal-success', 'کد تخفیف با موفقیت اعمال شد . ');
+        exit();
     }
 }

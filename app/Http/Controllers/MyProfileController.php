@@ -72,6 +72,8 @@ class MyProfileController extends Controller
             'user_id' => auth()->user()->id,
             'payment_id' => '1',
             'delivery_id' => '1',
+            'discount_amount' => $cart->discount_amount,
+            'discount_code' => $cart->discount_code,
         ]);
 
         foreach ($cart->cartItems as $cartItem) {

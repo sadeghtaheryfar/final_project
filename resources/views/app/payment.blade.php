@@ -53,8 +53,11 @@
                                 <section class="row">
                                     <section class="col-md-5">
                                         <section class="input-group input-group-sm">
-                                            <input type="text" class="form-control" placeholder="کد تخفیف را وارد کنید">
-                                            <button class="btn btn-primary" type="button">اعمال کد</button>
+                                            <form action="{{ route('cart.discountCode',$cart) }}" class="input-group input-group-sm" method="post">
+                                                @csrf
+                                                <input type="text" name="code" class="form-control" placeholder="کد تخفیف را وارد کنید">
+                                                <button class="btn btn-primary">اعمال کد</button>
+                                            </form>
                                         </section>
                                     </section>
 
@@ -161,7 +164,7 @@
 
                                 <section class="d-flex justify-content-between align-items-center">
                                     <p class="text-muted">تخفیف اعمال شده</p>
-                                    <p class="text-danger">100,000 تومان</p>
+                                    <p class="text-danger">{{ round(($cart->discount_amount) ? $cart->discount_amount : "0") }} تومان</p>
                                 </section>
 
                                 <p class="my-3">
@@ -172,7 +175,7 @@
 
                                 <section class="d-flex justify-content-between align-items-center">
                                     <p class="text-muted">مبلغ قابل پرداخت</p>
-                                    <p class="fw-bold">{{$total}} تومان</p>
+                                    <p class="fw-bold">{{$totalDiscount}} تومان</p>
                                 </section>
 
                                 <section class="">

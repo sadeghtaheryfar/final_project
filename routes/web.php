@@ -10,6 +10,7 @@ use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\MyProfileController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\admin\PannleController;
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\ProductController;
@@ -49,6 +50,7 @@ Route::get('/', [HomeController::class,'index'])->name('home');
 Route::prefix('admin')->name('admin.')->middleware('auth','verified','VerifyAdmin')->group(function () {
     Route::get('/', PannleController::class);
     Route::resource('product', ProductController::class);
+    Route::resource('banners', BannerController::class);
     Route::resource('category', ProductCategoryController::class);
     Route::resource('order', OrderController::class);
     Route::get('gallery/{product}', [ProductImageController::class,'index'])->name('gallery');
@@ -75,6 +77,7 @@ Route::get('myOrder/myOrderItems/{order}', [myProfileController::class, 'myOrder
 Route::get('/myFavorites', [myProfileController::class, 'myFavorites'])->name('myFavorites')->middleware('auth','verified');
 Route::get('/myComparisons', [myProfileController::class, 'myComparisons'])->name('myComparisons')->middleware('auth','verified');
 Route::post('/orderRegistration/{cart}', [myProfileController::class, 'orderRegistration'])->name('orderRegistration')->middleware('auth','verified');
+Route::post('cart/discount-code', [CartController::class,'discountCode'])->name('cart.discountCode')->middleware('auth','verified');
 Route::resource('cart', CartController::class)->middleware('auth','verified');
 Route::get('cartItem/storeToCartItem/{product}',[CartItemController::class, 'storeToCartItem'])->name('cartItem.storeToCartItem')->middleware('auth','verified');
 Route::get('cartItem/addTOMyFavourite/{product}',[CartItemController::class, 'addTOMyFavourite'])->name('cartItem.addTOMyFavourite')->middleware('auth','verified');

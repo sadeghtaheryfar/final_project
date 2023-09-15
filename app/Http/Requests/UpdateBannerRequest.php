@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreDiscountCodeRequest extends FormRequest
+class UpdateBannerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,13 +22,7 @@ class StoreDiscountCodeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'code' => 'required|max:15|sometimes|unique:discount_codes',
-            'amount_type' => 'required|integer',
-            'amount' => 'required|integer',
-            'type' => 'required|integer',
-            'user_id' => 'integer',
-            'start_date' => 'required|numeric',
-            'end_date' => 'required|numeric',
+            //
         ];
     }
 }

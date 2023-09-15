@@ -5,59 +5,74 @@
 @endsection
 
 @section('title')
-    edit product
+    edit discount celing
 @endsection
 
 @section('content')
     <section class="mb-2 d-flex justify-content-between align-items-center">
-        <h2 class="h4">Edit Products #{{ $product->id }}</h2>
+        <h2 class="h4">edit discount celing #{{ $discountCode->id }}</h2>
     </section>
 
     <section class="row my-3">
         <section class="col-12">
 
-            <form method="post" action="{{ route('admin.product.update',$product) }}" enctype="multipart/form-data">
-                @csrf
+            <form method="post" action="{{ route('admin.discount-code.update',$discountCode) }}">
                 @method('PUT')
+                @csrf
                 <div class="form-group">
-                    <label for="name">name</label>
-                    <input type="text" class="form-control" id="name" name="name" value="{{ $product->name }}"
-                        placeholder="Enter name ..." required autofocus>
+                    <label for="code">code</label>
+                    <input type="text" class="form-control" id="code" name="code" value="{{ $discountCode->code }}" placeholder="Enter code ..." required autofocus>
                 </div>
 
                 <div class="form-group">
-                    <label for="introduction">introduction</label>
-                    <textarea class="form-control" id="introduction" name="introduction" placeholder="introduction ..." rows="5" required autofocus>{{ $product->introduction }}</textarea>
+                    <label for="amount_type">amount type</label>
+                    <select name="amount_type" id="amount_type" class="form-control" required autofocus>
+                        <option value="0" @if ($discountCode->amount_type == 0) selected @endif>percentage</option>
+                        <option value="1" @if ($discountCode->amount_type == 1) selected @endif>price unit</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="image">image</label>
-                    <input type="file" id="image" name="image" class="form-control-file" autofocus>
-                    <img src="{{ asset($product->image) }}" alt="" width="100" height="100">
+                    <label for="amount">amount</label>
+                    <input type="text" id="amount" name="amount" class="form-control" value="{{ $discountCode->amount }}"
+                        required autofocus>
                 </div>
 
                 <div class="form-group">
-                    <label for="price">price</label>
-                    <input type="text" id="price" name="price" class="form-control" value="{{ round($product->price) }}" required autofocus>
+                    <label for="discount_celing">discount celing</label>
+                    <input type="text" id="discount_celing" name="discount_celing" class="form-control"
+                    value="{{ $discountCode->discount_celing }}" autofocus @if($discountCode->amount_type == 1) @disabled(true) @endif>
                 </div>
 
                 <div class="form-group">
-                    <label for="cat_id">category_id</label>
-                    <select name="category_id" id="category_id" class="form-control" required autofocus>
+                    <label for="type">type</label>
+                    <select name="type" id="type" class="form-control" required autofocus>
+                        <option value="0" @if ($discountCode->type == 0) selected @endif>common</option>
+                        <option value="1" @if ($discountCode->type == 1) selected @endif>privet</option>
+                    </select>
+                </div>
 
-                        @foreach ($categories as $category)
-                            <option value="{{ $category->id }}" @if ($product->category_id == $category->id) selected @endif>
-                                {{ $category->name }}
-                            </option>
+                <div class="form-group">
+                    <label for="user_id">user</label>
+                    <select name="user_id" id="user_id" class="form-control" required autofocus @if($discountCode->type == 0) @disabled(true) @endif>
+                        @foreach ($users as $user)
+                            <option value="{{ $user->id }}" @if ($discountCode->user_id == $user->id) selected @endif>{{ $user->email }}</option>
                         @endforeach
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="published_at">published at</label>
-                    <input type="text" class="form-control d-none" id="published_at" name="published_at" required
+                    <label for="start_date">start date</label>
+                    <input type="text" class="form-control d-none" value="{{ $discountCode->start_date }}" id="start_date" name="start_date" required
                         autofocus>
-                    <input type="text" class="form-control" id="published_at_view" required autofocus>
+                    <input type="text" class="form-control" value="{{ $discountCode->start_date }}" id="start_date_view" required autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label for="end_date">end date</label>
+                    <input type="text" class="form-control d-none" value="{{ $discountCode->end_date }}" id="end_date" name="end_date" required
+                        autofocus>
+                    <input type="text" class="form-control" value="{{ $discountCode->end_date }}" id="end_date_view" required autofocus>
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-sm">store</button>
@@ -75,11 +90,32 @@
     <script>
         $(document).ready(function() {
             CKEDITOR.replace('introduction')
-            $('#published_at_view').persianDatepicker({
+            $('#start_date_view').persianDatepicker({
                 observer: true,
                 format: 'YYYY/MM/DD',
-                altField: '#published_at'
+                altField: '#start_date'
             })
+            $('#end_date_view').persianDatepicker({
+                observer: true,
+                format: 'YYYY/MM/DD',
+                altField: '#end_date'
+            })
+        })
+
+        $('#type').change(function() {
+            if ($('#type').find(':selected').val() == '1') {
+                $('#user_id').removeAttr('disabled');
+            }else{
+                $('#user_id').attr('disabled', 'disabled');
+            }
+        })
+
+        $('#amount_type').change(function() {
+            if ($('#amount_type').find(':selected').val() == '1') {
+                $('#discount_celing').attr('disabled', 'disabled');
+            }else{
+                $('#discount_celing').removeAttr('disabled');
+            }
         })
     </script>
 @endsection

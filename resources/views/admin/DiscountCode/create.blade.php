@@ -16,7 +16,7 @@
     <section class="row my-3">
         <section class="col-12">
 
-            <form method="post" action="{{ route('admin.discount-code.store') }}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('admin.discount-code.store') }}">
                 @csrf
                 <div class="form-group">
                     <label for="code">code</label>
@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <label for="discount_celing">discount celing</label>
                     <input type="text" id="discount_celing" name="discount_celing" class="form-control"
-                        value="{{ old('discount_celing') }}" required autofocus>
+                        value="{{ old('discount_celing') }}" autofocus>
                 </div>
 
                 <div class="form-group">
