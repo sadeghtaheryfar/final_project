@@ -1,12 +1,12 @@
 @extends('admin.layout.master')
 
 @section('title')
-    product
+    Banners
 @endsection
 
 @section('content')
     <section class="mb-2 d-flex justify-content-between align-items-center">
-        <h2 class="h4">Products</h2>
+        <h2 class="h4">Banners</h2>
         <a href="{{ route("admin.banners.create") }}" class="btn btn-sm btn-success">Create</a>
     </section>
 
@@ -21,28 +21,22 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach ($products as $product)
+                @foreach ($banners as $banner)
                 <tr>
-                    <td>{{ $product->id }}</td>
-                    <td><img src="{{ asset($product->image) }}" alt="" width="100" height="100"></td>
-                    <td>{{ $product->name }}</td>
-                    <td>{{ Str::limit($product->introduction, 50) }}</td>
-                    <td>{{ $product->sold_number }}</td>
+                    <td>{{ $banner->id }}</td>
+                    <td><img src="{{ asset($banner->image) }}" alt="" width="100" height="100"></td>
+                    <td>{{ $banner->url }}</td>
                     <td class="d-flex">
-                        <a href="{{ route('admin.product.edit',$product) }}" class="btn btn-info btn-sm">Edit</a>
+                        <a href="{{ route('admin.banners.edit',$banner) }}" class="btn btn-info btn-sm">Edit</a>
 
-                        <a href="{{ route('admin.gallery',$product) }}" class="btn btn-info btn-sm ml-2">Gallery</a>
-
-                        <a href="{{ route('admin.feature',$product) }}" class="btn btn-info btn-sm ml-2">Feature</a>
-
-                        <form action="{{ route('admin.product.destroy',$product) }}" method="post">
+                        <form action="{{ route('admin.banners.destroy',$banner) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm ml-2">Delete</button>
                         </form>
                     </td>
                 </tr>
-                @endforeach --}}
+                @endforeach
             </tbody>
         </table>
     </section>

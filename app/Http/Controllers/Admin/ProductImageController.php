@@ -19,6 +19,8 @@ class ProductImageController extends Controller
         return view('admin.product.gallery.show', compact('product'));
     }
 
+    
+
     /**
      * Show the form for creating a new resource.
      */

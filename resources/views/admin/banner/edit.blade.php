@@ -5,81 +5,34 @@
 @endsection
 
 @section('title')
-    edit product
+    create Banners
 @endsection
 
 @section('content')
     <section class="mb-2 d-flex justify-content-between align-items-center">
-        <h2 class="h4">Edit Products #{{ $product->id }}</h2>
+        <h2 class="h4">Banner</h2>
     </section>
 
     <section class="row my-3">
         <section class="col-12">
 
-            <form method="post" action="{{ route('admin.product.update',$product) }}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('admin.banners.update',$banner) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="form-group">
-                    <label for="name">name</label>
-                    <input type="text" class="form-control" id="name" name="name" value="{{ $product->name }}"
-                        placeholder="Enter name ..." required autofocus>
-                </div>
-
-                <div class="form-group">
-                    <label for="introduction">introduction</label>
-                    <textarea class="form-control" id="introduction" name="introduction" placeholder="introduction ..." rows="5" required autofocus>{{ $product->introduction }}</textarea>
+                    <label for="url">url</label>
+                    <input type="text" class="form-control" id="url" name="url" value="{{ $banner->url }}"
+                        placeholder="Enter url ..." required autofocus>
                 </div>
 
                 <div class="form-group">
                     <label for="image">image</label>
-                    <input type="file" id="image" name="image" class="form-control-file" autofocus>
-                    <img src="{{ asset($product->image) }}" alt="" width="100" height="100">
-                </div>
-
-                <div class="form-group">
-                    <label for="price">price</label>
-                    <input type="text" id="price" name="price" class="form-control" value="{{ round($product->price) }}" required autofocus>
-                </div>
-
-                <div class="form-group">
-                    <label for="cat_id">category_id</label>
-                    <select name="category_id" id="category_id" class="form-control" required autofocus>
-
-                        @foreach ($categories as $category)
-                            <option value="{{ $category->id }}" @if ($product->category_id == $category->id) selected @endif>
-                                {{ $category->name }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="published_at">published at</label>
-                    <input type="text" class="form-control d-none" id="published_at" name="published_at" required
-                        autofocus>
-                    <input type="text" class="form-control" id="published_at_view" required autofocus>
+                    <input type="file" id="image" name="image" class="form-control-file" required autofocus>
+                    <img class="mt-3" src="{{ asset($banner->image) }}" alt="" width="100" height="100">
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-sm">store</button>
             </form>
         </section>
     </section>
-@endsection
-
-@section('scripts')
-    @parent
-    <script src="{{ asset('jalalidatepicker/persian-datepicker.min.js') }}"></script>
-    <script src="{{ asset('jalalidatepicker/persian-date.min.js') }}"></script>
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-
-    <script>
-        $(document).ready(function() {
-            CKEDITOR.replace('introduction')
-            $('#published_at_view').persianDatepicker({
-                observer: true,
-                format: 'YYYY/MM/DD',
-                altField: '#published_at'
-            })
-        })
-    </script>
 @endsection

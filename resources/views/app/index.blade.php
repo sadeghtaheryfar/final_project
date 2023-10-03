@@ -12,24 +12,15 @@
             <section class="row">
                 <section class="col-md-8 pe-md-1 ">
                     <section id="slideshow" class="owl-carousel owl-theme">
-                        <section class="item"><a class="w-100 d-block h-auto text-decoration-none" href="#"><img
-                                    class="w-100 rounded-2 d-block h-auto" src="assets/images/slideshow/1.jpg"
-                                    alt=""></a></section>
-                        <section class="item"><a class="w-100 d-block h-auto text-decoration-none" href="#"><img
-                                    class="w-100 rounded-2 d-block h-auto" src="assets/images/slideshow/2.jpg"
-                                    alt=""></a></section>
-                        <section class="item"><a class="w-100 d-block h-auto text-decoration-none" href="#"><img
-                                    class="w-100 rounded-2 d-block h-auto" src="assets/images/slideshow/3.jpg"
-                                    alt=""></a></section>
-                        <section class="item"><a class="w-100 d-block h-auto text-decoration-none" href="#"><img
-                                    class="w-100 rounded-2 d-block h-auto" src="assets/images/slideshow/4.jpg"
-                                    alt=""></a></section>
-                        <section class="item"><a class="w-100 d-block h-auto text-decoration-none" href="#"><img
-                                    class="w-100 rounded-2 d-block h-auto" src="assets/images/slideshow/5.jpg"
-                                    alt=""></a></section>
-                        <section class="item"><a class="w-100 d-block h-auto text-decoration-none" href="#"><img
-                                    class="w-100 rounded-2 d-block h-auto" src="assets/images/slideshow/6.gif"
-                                    alt=""></a></section>
+                        @forelse ($banners as $banner)
+                            <section class="item">
+                                <a class="w-100 d-block h-auto text-decoration-none" href="{{ $banner->url }}">
+                                    <img class="w-100 rounded-2 d-block h-auto" src="{{ asset($banner->image) }}" alt="">
+                                </a>
+                            </section>
+                        @empty
+                            
+                        @endforelse
                     </section>
                 </section>
                 <section class="col-md-4 ps-md-1 mt-2 mt-md-0">
@@ -41,8 +32,6 @@
             </section>
         </section>
         <!-- end slideshow -->
-
-
 
         <!-- start product lazy load -->
         <section class="mb-3">
@@ -69,11 +58,13 @@
                                         <section class="item">
                                             <section class="lazyload-item-wrapper">
                                                 <section class="product">
-                                                    <section class="product-add-to-cart"><a href="{{route('cartItem.storeToCartItem',$product)}}"
+                                                    <section class="product-add-to-cart"><a
+                                                            href="{{ route('cartItem.storeToCartItem', $product) }}"
                                                             data-bs-toggle="tooltip" data-bs-placement="left"
                                                             title="افزودن به سبد خرید"><i class="fa fa-cart-plus"></i></a>
                                                     </section>
-                                                    <section class="product-add-to-favorite"><a href="{{route('cartItem.addTOMyFavourite',$product)}}"
+                                                    <section class="product-add-to-favorite"><a
+                                                            href="{{ route('cartItem.addTOMyFavourite', $product) }}"
                                                             data-bs-toggle="tooltip" data-bs-placement="left"
                                                             title="افزودن به علاقه مندی"><i class="fa fa-heart"></i></a>
                                                     </section>
@@ -88,10 +79,12 @@
                                                         </section>
                                                         <section class="product-price-wrapper">
                                                             <section class="product-discount">
-                                                                <span class="product-old-price">{{ round($product->price) }}</span>
+                                                                <span
+                                                                    class="product-old-price">{{ round($product->price) }}</span>
                                                                 <span class="product-discount-amount">10%</span>
                                                             </section>
-                                                            <section class="product-price">{{ round($product->price) }} تومان</section>
+                                                            <section class="product-price">{{ round($product->price) }}
+                                                                تومان</section>
                                                         </section>
                                                         <section class="product-colors">
                                                             <section class="product-colors-item"
@@ -106,7 +99,6 @@
                                             </section>
                                         </section>
                                     @endforeach
-
                                 </section>
                             </section>
                         </section>
@@ -159,11 +151,13 @@
                                         <section class="item">
                                             <section class="lazyload-item-wrapper">
                                                 <section class="product">
-                                                    <section class="product-add-to-cart"><a href="{{route('cartItem.storeToCartItem',$product)}}"
+                                                    <section class="product-add-to-cart"><a
+                                                            href="{{ route('cartItem.storeToCartItem', $product) }}"
                                                             data-bs-toggle="tooltip" data-bs-placement="left"
                                                             title="افزودن به سبد خرید"><i class="fa fa-cart-plus"></i></a>
                                                     </section>
-                                                    <section class="product-add-to-favorite"><a href="{{route('cartItem.addTOMyFavourite',$product)}}"
+                                                    <section class="product-add-to-favorite"><a
+                                                            href="{{ route('cartItem.addTOMyFavourite', $product) }}"
                                                             data-bs-toggle="tooltip" data-bs-placement="left"
                                                             title="افزودن به علاقه مندی"><i class="fa fa-heart"></i></a>
                                                     </section>
@@ -178,10 +172,12 @@
                                                         </section>
                                                         <section class="product-price-wrapper">
                                                             <section class="product-discount">
-                                                                <span class="product-old-price">{{ round($product->price) }}</span>
+                                                                <span
+                                                                    class="product-old-price">{{ round($product->price) }}</span>
                                                                 <span class="product-discount-amount">10%</span>
                                                             </section>
-                                                            <section class="product-price">{{ round($product->price) }} تومان</section>
+                                                            <section class="product-price">{{ round($product->price) }}
+                                                                تومان</section>
                                                         </section>
                                                         <section class="product-colors">
                                                             <section class="product-colors-item"

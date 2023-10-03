@@ -54,47 +54,48 @@
 @extends('auth.layouts.master')
 
 @section('title', 'ورود به سایت')
-    
+
 @section('content')
 
 
-<form method="post" action="{{ route('login') }}"  class="vh-100 d-flex justify-content-center align-items-center pb-5">
-    @csrf
-    <section class="login-wrapper mb-5">
-        <section class="login-logo">
-           
-            <img src="{{ asset('assets/images/logo/4.png') }}" alt="">
-        </section>
+    <form method="post" action="{{ route('login') }}" class="vh-100 d-flex justify-content-center align-items-center pb-5">
+        @csrf
+        <section class="login-wrapper mb-5">
+            <section class="login-logo">
 
-        <section class="login-title ">ورود</section>
-        @include('auth.layouts.partials.error')
+                <img src="{{ asset('assets/images/logo/4.png') }}" alt="">
+            </section>
 
-
-        <section class="login-input-text">
-            <input type="text" class="mb-2 mt-2"name="email" value="{{ old('email') }}" placeholder="ایمیل خود را وارد کنید" >
-        </section>
-
-        <section class="login-input-text">
-            <input type="password" class="mb-2" name="password"  placeholder="پسورد خود را وارد کنید">
-        </section>
+            <section class="login-title ">ورود</section>
+            @include('auth.layouts.partials.error')
 
 
-        <section class="login-btn d-grid g-2"><button class="btn btn-danger">ورود به آمازون</button></section>
+            <section class="login-input-text">
+                <input type="text" class="mb-2 mt-2"name="email" value="{{ old('email') }}"
+                    placeholder="ایمیل خود را وارد کنید">
+            </section>
 
-        <section class="login-terms-and-conditions">
+            <section class="login-input-text">
+                <input type="password" class="mb-2" name="password" placeholder="پسورد خود را وارد کنید">
+            </section>
 
-           
-                    <a  class="btn btn-primary" href="{{ route('password.request') }}" role="button">
+
+            <section class="login-btn d-grid g-2"><button class="btn btn-danger">ورود به آمازون</button></section>
+
+            <section class="login-terms-and-conditions">
+
+
+                <a class="btn btn-primary" href="{{ route('password.request') }}" role="button">
                     بازیابی پسورد
-                     </a>
-                    <a class="btn btn-primary" href="{{ route('register') }}" role="button"> 
-                    حساب کاربری ندارید ؟ 
-                    </a>
-               
-        
+                </a>
+                <a class="btn btn-primary" href="{{ route('register') }}" role="button">
+                    حساب کاربری ندارید ؟
+                </a>
+
+
+            </section>
         </section>
-    </section>
-</form>
+    </form>
 
 
 @endsection

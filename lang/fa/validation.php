@@ -156,6 +156,5 @@ return [
         "reference_id"              => "ارجاع",
         "priority_id"               => "اولویت",
         "category_id"               => "دسته بندی",
-        
     ],
 ];

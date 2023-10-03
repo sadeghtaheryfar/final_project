@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreBannerRequest extends FormRequest
+class UpdateLoginRegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,8 +22,7 @@ class StoreBannerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'url' => 'required',
-            'image' => 'required|mimes:jpg,bmp,png',
+            //
         ];
     }
 }

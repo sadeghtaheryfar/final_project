@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\DiscountCodeController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\ProductFeatureController;
 use App\Http\Controllers\Admin\ProductCategoryController;
+use App\Http\Controllers\Auth\Customer\LoginRegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,23 +32,9 @@ use App\Http\Controllers\Admin\ProductCategoryController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
-
 Route::get('/', [HomeController::class,'index'])->name('home');
 
-Route::prefix('admin')->name('admin.')->middleware('auth','verified','VerifyAdmin')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware('auth','VerifyAdmin')->group(function () {
     Route::get('/', PannleController::class);
     Route::resource('product', ProductController::class);
     Route::resource('banners', BannerController::class);
@@ -69,31 +56,40 @@ Route::prefix('admin')->name('admin.')->middleware('auth','verified','VerifyAdmi
 });
 
 
-Route::get('/myProfile/editMyProfile', [myProfileController::class, 'editMyProfile'])->name('myProfile.editMyProfile')->middleware('auth','verified');
-Route::put('/myProfile/updateMyProfile', [myProfileController::class, 'updateMyProfile'])->name('myProfile.updateMyProfile')->middleware('auth','verified');
-Route::get('/myProfile', [myProfileController::class, 'index'])->name('myProfile')->middleware('auth','verified');
-Route::get('/myOrders/{filter}', [myProfileController::class, 'myOrders'])->name('myOrders')->middleware('auth','verified');
-Route::get('myOrder/myOrderItems/{order}', [myProfileController::class, 'myOrderItems'])->name('myOrder.myOrderItems')->middleware('auth','verified');
-Route::get('/myFavorites', [myProfileController::class, 'myFavorites'])->name('myFavorites')->middleware('auth','verified');
-Route::get('/myComparisons', [myProfileController::class, 'myComparisons'])->name('myComparisons')->middleware('auth','verified');
-Route::post('/orderRegistration/{cart}', [myProfileController::class, 'orderRegistration'])->name('orderRegistration')->middleware('auth','verified');
-Route::post('cart/discount-code', [CartController::class,'discountCode'])->name('cart.discountCode')->middleware('auth','verified');
-Route::resource('cart', CartController::class)->middleware('auth','verified');
-Route::get('cartItem/storeToCartItem/{product}',[CartItemController::class, 'storeToCartItem'])->name('cartItem.storeToCartItem')->middleware('auth','verified');
-Route::get('cartItem/addTOMyFavourite/{product}',[CartItemController::class, 'addTOMyFavourite'])->name('cartItem.addTOMyFavourite')->middleware('auth','verified');
-Route::resource('cartItem', CartItemController::class)->middleware('auth','verified');
-Route::get('adress/showPayment',[AdressController::class, 'showPayment'])->name('adress.showPayment')->middleware('auth','verified');
-Route::resource('adress', AdressController::class)->middleware('auth','verified');
-Route::resource('offlinePayment', OfflinePaymentController::class)->middleware('auth','verified');
+Route::namespace('Auth.')->group(function () {
+    Route::get('auth', [LoginRegisterController::class, 'loginRegisterForm'])->name('auth.customer.login-register-form');
+    Route::post('auth', [LoginRegisterController::class, 'loginRegisterStore'])->name('auth.customer.login-register-store');
+
+    Route::get('auth-otp/{otp}', [LoginRegisterController::class, 'loginConfirmForm'])->name('auth.customer.login-confirm-form');
+    Route::post('auth-otp/{otp}', [LoginRegisterController::class, 'loginConfirmStore'])->name('auth.customer.login-confirm-store');
+});
 
 
-Route::get('products/AddToFavorite/{product}',[ProductsController::class, 'AddToFavorite'])->name('products.AddToFavorite')->middleware('auth','verified');
-Route::get('products/RemoveFromFavouriteProduct/{product}',[ProductsController::class, 'RemoveFromFavouriteProduct'])->name('products.RemoveFromFavouriteProduct')->middleware('auth','verified');
-Route::get('products/AddToComparison/{product}',[ProductsController::class, 'AddToComparison'])->name('products.AddToComparison')->middleware('auth','verified');
-Route::get('products/RemoveComparisonProduct/{product}',[ProductsController::class, 'RemoveComparisonProduct'])->name('products.RemoveComparisonProduct')->middleware('auth','verified');
-Route::get('products/showProductComment/{product}',[ProductsController::class, 'showProductComment'])->name('products.showProductComment')->middleware('auth','verified');
-Route::post('products/storeComment/{product}',[ProductsController::class, 'storeComment'])->name('products.storeComment')->middleware('auth','verified');
-Route::post('products/storeRaiting/{product}',[ProductsController::class, 'storeRaiting'])->name('products.storeRaiting')->middleware('auth','verified');
+Route::get('/myProfile/editMyProfile', [myProfileController::class, 'editMyProfile'])->name('myProfile.editMyProfile')->middleware('auth');
+Route::put('/myProfile/updateMyProfile', [myProfileController::class, 'updateMyProfile'])->name('myProfile.updateMyProfile')->middleware('auth');
+Route::get('/myProfile', [myProfileController::class, 'index'])->name('myProfile')->middleware('auth');
+Route::get('/myOrders/{filter}', [myProfileController::class, 'myOrders'])->name('myOrders')->middleware('auth');
+Route::get('myOrder/myOrderItems/{order}', [myProfileController::class, 'myOrderItems'])->name('myOrder.myOrderItems')->middleware('auth');
+Route::get('/myFavorites', [myProfileController::class, 'myFavorites'])->name('myFavorites')->middleware('auth');
+Route::get('/myComparisons', [myProfileController::class, 'myComparisons'])->name('myComparisons')->middleware('auth');
+Route::post('/orderRegistration/{cart}', [myProfileController::class, 'orderRegistration'])->name('orderRegistration')->middleware('auth');
+Route::post('cart/discount-code', [CartController::class,'discountCode'])->name('cart.discountCode')->middleware('auth');
+Route::resource('cart', CartController::class)->middleware('auth');
+Route::get('cartItem/storeToCartItem/{product}',[CartItemController::class, 'storeToCartItem'])->name('cartItem.storeToCartItem')->middleware('auth');
+Route::get('cartItem/addTOMyFavourite/{product}',[CartItemController::class, 'addTOMyFavourite'])->name('cartItem.addTOMyFavourite')->middleware('auth');
+Route::resource('cartItem', CartItemController::class)->middleware('auth');
+Route::get('adress/showPayment',[AdressController::class, 'showPayment'])->name('adress.showPayment')->middleware('auth');
+Route::resource('adress', AdressController::class)->middleware('auth');
+Route::resource('offlinePayment', OfflinePaymentController::class)->middleware('auth');
+
+
+Route::get('products/AddToFavorite/{product}',[ProductsController::class, 'AddToFavorite'])->name('products.AddToFavorite')->middleware('auth');
+Route::get('products/RemoveFromFavouriteProduct/{product}',[ProductsController::class, 'RemoveFromFavouriteProduct'])->name('products.RemoveFromFavouriteProduct')->middleware('auth');
+Route::get('products/AddToComparison/{product}',[ProductsController::class, 'AddToComparison'])->name('products.AddToComparison')->middleware('auth');
+Route::get('products/RemoveComparisonProduct/{product}',[ProductsController::class, 'RemoveComparisonProduct'])->name('products.RemoveComparisonProduct')->middleware('auth');
+Route::get('products/showProductComment/{product}',[ProductsController::class, 'showProductComment'])->name('products.showProductComment')->middleware('auth');
+Route::post('products/storeComment/{product}',[ProductsController::class, 'storeComment'])->name('products.storeComment')->middleware('auth');
+Route::post('products/storeRaiting/{product}',[ProductsController::class, 'storeRaiting'])->name('products.storeRaiting')->middleware('auth');
 Route::resource('products', ProductsController::class);
 
 require __DIR__.'/auth.php';

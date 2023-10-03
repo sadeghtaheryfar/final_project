@@ -11,7 +11,7 @@ class UpdateBannerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdateBannerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'url' => 'required',
+            'image' => 'mimes:jpg,bmp,png',
         ];
     }
 }
