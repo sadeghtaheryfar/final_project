@@ -37,7 +37,7 @@ class FarazSmsService
     {
         $url = "https://ippanel.com/services.jspd";
 
-        $rcpt_nm = array('9121111111', '9122222222');
+        $rcpt_nm = array($to);
         $param = array(
             'uname' => $this->username,
             'pass' => $this->password,

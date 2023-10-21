@@ -14,7 +14,11 @@ class SmsService implements MessageInterface{
     public function fire()
     {
         $FarazSms = new FarazSmsService();
-        return $FarazSms->SendSmsPatern($this->from,$this->to,$this->text,$this->isFlash);
+        if($this->isFlash === true) {
+            return $FarazSms->SendSmsPatern($this->from,$this->to,$this->text,$this->isFlash);
+        }else{
+            return $FarazSms->SendSms($this->from,$this->to,$this->text,$this->isFlash);
+        }
     }
 
     public function getFrom()

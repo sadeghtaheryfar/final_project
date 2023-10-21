@@ -7,8 +7,10 @@
             <section class="d-md-flex justify-content-md-between align-items-md-center py-3">
 
                 <section class="d-flex justify-content-between align-items-center d-md-block">
-                    <a class="text-decoration-none" href="{{ route('home') }}"><img src="{{ asset('assets/images/logo/8.png') }}" alt="logo"></a>
-                    <button class="btn btn-link text-dark d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                    <a class="text-decoration-none" href="{{ route('home') }}"><img
+                            src="{{ asset('assets/images/logo/8.png') }}" alt="logo"></a>
+                    <button class="btn btn-link text-dark d-md-none" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
                         <i class="fa fa-bars me-1"></i>
                     </button>
                 </section>
@@ -17,126 +19,157 @@
                     <section class="search-box">
                         <section class="search-textbox">
                             <span><i class="fa fa-search"></i></span>
-                            <input id="search" type="text" class="" placeholder="جستجو ..." autocomplete="off">
+                            <input id="search" type="text" class="" placeholder="جستجو ..."
+                                autocomplete="off">
                         </section>
                         <section class="search-result visually-hidden">
-                            <section class="search-result-title">نتایج جستجو برای  <span class="search-words">"موبایل شیا"</span><span class="search-result-type">در دسته بندی ها</span></section>
-                            <section class="search-result-item"><a class="text-decoration-none" href="#"><i class="fa fa-link"></i> دسته موبایل و وسایل جانبی</a></section>
+                            <section class="search-result-title">نتایج جستجو برای <span class="search-words">"موبایل
+                                    شیا"</span><span class="search-result-type">در دسته بندی ها</span></section>
+                            <section class="search-result-item"><a class="text-decoration-none" href="#"><i
+                                        class="fa fa-link"></i> دسته موبایل و وسایل جانبی</a></section>
 
-                            <section class="search-result-title">نتایج جستجو برای  <span class="search-words">"موبایل شیا"</span><span class="search-result-type">در برندها</span></section>
-                            <section class="search-result-item"><a class="text-decoration-none" href="#"><i class="fa fa-link"></i> برند شیائومی</a></section>
-                            <section class="search-result-item"><a class="text-decoration-none" href="#"><i class="fa fa-link"></i> برند توشیبا</a></section>
-                            <section class="search-result-item"><a class="text-decoration-none" href="#"><i class="fa fa-link"></i> برند شیانگ پینگ</a></section>
+                            <section class="search-result-title">نتایج جستجو برای <span class="search-words">"موبایل
+                                    شیا"</span><span class="search-result-type">در برندها</span></section>
+                            <section class="search-result-item"><a class="text-decoration-none" href="#"><i
+                                        class="fa fa-link"></i> برند شیائومی</a></section>
+                            <section class="search-result-item"><a class="text-decoration-none" href="#"><i
+                                        class="fa fa-link"></i> برند توشیبا</a></section>
+                            <section class="search-result-item"><a class="text-decoration-none" href="#"><i
+                                        class="fa fa-link"></i> برند شیانگ پینگ</a></section>
 
-                            <section class="search-result-title">نتایج جستجو برای  <span class="search-words">"موبایل شیا"</span><span class="search-result-type">در کالاها</span></section>
-                            <section class="search-result-item"><span class="search-no-result">موردی یافت نشد</span></section>
+                            <section class="search-result-title">نتایج جستجو برای <span class="search-words">"موبایل
+                                    شیا"</span><span class="search-result-type">در کالاها</span></section>
+                            <section class="search-result-item"><span class="search-no-result">موردی یافت نشد</span>
+                            </section>
                         </section>
                     </section>
                 </section>
 
                 <section class="mt-3 mt-md-auto text-end">
                     <section class="d-inline px-md-3">
-                        <button class="btn btn-link text-decoration-none text-dark dropdown-toggle profile-button" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-link text-decoration-none text-dark dropdown-toggle profile-button"
+                            type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-user"></i>
                         </button>
                         @guest
-                        <section class="dropdown-menu dropdown-menu-end custom-drop-down" aria-labelledby="dropdownMenuButton1">
-                       <section><a class="dropdown-item" href="{{route('login')}}"><i class="fa fa-user-circle"></i>ورود </a></section>
-                       <section><a class="dropdown-item" href="{{route('register')}}"><i class="fa fa-newspaper"></i>ثبت نام</a></section>
-                       
-                   </section>
-                   @endguest
-                   @auth
-                       
-                 
-                   <section class="dropdown-menu dropdown-menu-end custom-drop-down" aria-labelledby="dropdownMenuButton1">
-                       <section><a class="dropdown-item" href="{{route('myProfile')}}"><i class="fa fa-user-circle"></i>پروفایل کاربری</a></section>
-                       <section><a class="dropdown-item" href="{{route('myOrders',$filter='1')}}"><i class="fa fa-newspaper"></i>سفارشات</a></section>
-                       <section><a class="dropdown-item" href="{{route('myFavorites')}}"><i class="fa fa-heart"></i>لیست علاقه مندی</a></section>
-                       <section><hr class="dropdown-divider"></section>
-                       <form action="{{ route('logout') }}" method="post">
-                           @csrf
-                           <button type="submit" class="dropdown-item">خروج</button>
-                       </form>
+                            <section class="dropdown-menu dropdown-menu-end custom-drop-down"
+                                aria-labelledby="dropdownMenuButton1">
+                                <section><a class="dropdown-item" href="{{ route('auth.customer.login-register-form') }}"><i
+                                            class="fa fa-user-circle"></i>ورود </a></section>
+                                <section><a class="dropdown-item" href="{{ route('auth.customer.login-register-form') }}"><i
+                                            class="fa fa-newspaper"></i>ثبت نام</a></section>
 
-                   </section>
-
-
-               </section>
-              
-
-               <section class="header-cart d-inline ps-3 border-start position-relative">
-                   <a class="btn btn-link position-relative text-dark header-cart-link" href="javascript:void(0)">
-                       <i class="fa fa-shopping-cart"></i><span style="top: 80%;" class="position-absolute start-0 translate-middle badge rounded-pill bg-danger">
-                       
-                        {{(Auth::user()->cart!=null)? Auth::user()->cart->cartItems->count():'0'}}
-                   </span>
-                   </a>
-                   <section class="header-cart-dropdown">
-                       <section class="border-bottom d-flex justify-content-between p-2">
-                           <span class="text-muted">{{(Auth::user()->cart!=null)? Auth::user()->cart->cartItems->count():'0'}} کالا</span>
-                           <a class="text-decoration-none text-info" href="{{route('cart.index')}}">مشاهده سبد خرید </a>
-                       </section>
-                       <section class="header-cart-dropdown-body">
-                           
-                      
-
-                        @if(Auth::user()->cart!=null)
-                           @foreach (Auth::user()->cart->cartItems as $cartItem)
-                             
-                        
-                           <section class="header-cart-dropdown-body-item d-flex justify-content-start align-items-center">
-                               <img class="flex-shrink-1" src="assets/images/products/1.jpg" alt="">
-                               <section class="w-100 text-truncate"><a class="text-decoration-none text-dark" href="{{route('products.show',$cartItem->product->id)}}">{{$cartItem->product->name}}</a></section>
-                               <section class="flex-shrink-1"><form action="{{ route('cartItem.destroy',$cartItem)}}" class="d-inline text-decoration-none ms-4 cart-delete" method="POST">
-                                   @csrf
-                                   @method("DELETE")
-                                   <button type="submit" class="btn inline-block btn-sm">
-                                       <i class="fa fa-trash-alt"></i>
-                                   </button>
-                               </form>
-                           </section>
-                           </section>
-                           
-                           @endforeach
-
-                           <section class="header-cart-dropdown-footer border-top d-flex justify-content-between align-items-center p-2">
-                            <section class="">
-                                <section>مبلغ قابل پرداخت</section>
-                            
-                            <section>
-                                @php
-                                     $total=0;
-                            foreach (Auth::user()->cart->cartItems as $cartItem) {
-                               $total+=$cartItem->product->price;
-                            }
-                                @endphp 
-                               
-                            
-                            {{$total}}تومان
-                            
                             </section>
-                        </section>
-                            <section class=""><a class="btn btn-danger btn-sm d-block" href="{{route('cart.index')}}">ثبت سفارش</a></section>
-                        </section>
-                           @else
-                           <section class="header-cart-dropdown-body-item d-flex justify-content-start align-items-center">
-                        
-                            <section class="w-100 text-truncate">سبد خرید شما خالی هست</section>
-                           @endif
-                        </section>
-                         
-                       </section>
-                      
+                        @endguest
+                        @auth
 
-                   </section>
-               </section>
 
-                 @endauth
+                            <section class="dropdown-menu dropdown-menu-end custom-drop-down"
+                                aria-labelledby="dropdownMenuButton1">
+                                <section><a class="dropdown-item" href="{{ route('myProfile') }}"><i
+                                            class="fa fa-user-circle"></i>پروفایل کاربری</a></section>
+                                <section><a class="dropdown-item" href="{{ route('myOrders', $filter = '1') }}"><i
+                                            class="fa fa-newspaper"></i>سفارشات</a></section>
+                                <section><a class="dropdown-item" href="{{ route('myFavorites') }}"><i
+                                            class="fa fa-heart"></i>لیست علاقه مندی</a></section>
+                                <section>
+                                    <hr class="dropdown-divider">
+                                </section>
+                                <form action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">خروج</button>
+                                </form>
 
-                </section>
+                            </section>
+
+
+                        </section>
+
+
+                        <section class="header-cart d-inline ps-3 border-start position-relative">
+                            <a class="btn btn-link position-relative text-dark header-cart-link" href="javascript:void(0)">
+                                <i class="fa fa-shopping-cart"></i><span style="top: 80%;"
+                                    class="position-absolute start-0 translate-middle badge rounded-pill bg-danger">
+
+                                    {{ Auth::user()->cart != null ? Auth::user()->cart->cartItems->count() : '0' }}
+                                </span>
+                            </a>
+                            <section class="header-cart-dropdown">
+                                <section class="border-bottom d-flex justify-content-between p-2">
+                                    <span
+                                        class="text-muted">{{ Auth::user()->cart != null ? Auth::user()->cart->cartItems->count() : '0' }}
+                                        کالا</span>
+                                    <a class="text-decoration-none text-info" href="{{ route('cart.index') }}">مشاهده سبد
+                                        خرید </a>
+                                </section>
+                                <section class="header-cart-dropdown-body">
+
+
+
+                                    @if (Auth::user()->cart != null)
+                                        @foreach (Auth::user()->cart->cartItems as $cartItem)
+                                            <section
+                                                class="header-cart-dropdown-body-item d-flex justify-content-start align-items-center">
+                                                <img class="flex-shrink-1" src="assets/images/products/1.jpg"
+                                                    alt="">
+                                                <section class="w-100 text-truncate"><a
+                                                        class="text-decoration-none text-dark"
+                                                        href="{{ route('products.show', $cartItem->product->id) }}">{{ $cartItem->product->name }}</a>
+                                                </section>
+                                                <section class="flex-shrink-1">
+                                                    <form action="{{ route('cartItem.destroy', $cartItem) }}"
+                                                        class="d-inline text-decoration-none ms-4 cart-delete"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn inline-block btn-sm">
+                                                            <i class="fa fa-trash-alt"></i>
+                                                        </button>
+                                                    </form>
+                                                </section>
+                                            </section>
+                                        @endforeach
+
+                                        <section
+                                            class="header-cart-dropdown-footer border-top d-flex justify-content-between align-items-center p-2">
+                                            <section class="">
+                                                <section>مبلغ قابل پرداخت</section>
+
+                                                <section>
+                                                    @php
+                                                        $total = 0;
+                                                        foreach (Auth::user()->cart->cartItems as $cartItem) {
+                                                            $total += $cartItem->product->price;
+                                                        }
+                                                    @endphp
+
+
+                                                    {{ $total }}تومان
+
+                                                </section>
+                                            </section>
+                                            <section class=""><a class="btn btn-danger btn-sm d-block"
+                                                    href="{{ route('cart.index') }}">ثبت سفارش</a></section>
+                                        </section>
+                                    @else
+                                        <section
+                                            class="header-cart-dropdown-body-item d-flex justify-content-start align-items-center">
+
+                                            <section class="w-100 text-truncate">سبد خرید شما خالی هست</section>
+                                    @endif
+                                </section>
+
+                            </section>
+
+
+                        </section>
+                    </section>
+
+                @endauth
+
             </section>
         </section>
+    </section>
     </section>
     <!-- end top-header logo, searchbox and cart -->
 
@@ -157,7 +190,8 @@
                                 <section class="sublist-item">
                                     <section class="sublist-item-toggle">کالای دیجیتال</section>
                                     <section class="sublist-item-sublist">
-                                        <section class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
+                                        <section
+                                            class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
                                             <section class="sublist-column col">
                                                 <a href="#" class="sub-category">لوازم جانبی موبایل</a>
                                                 <a href="#" class="sub-sub-category">اسپیکر موبایل</a>
@@ -182,7 +216,8 @@
                                                 <a href="#" class="sub-category">هارد، فلش و SSD</a>
                                                 <a href="#" class="sub-category">دوربین</a>
                                                 <a href="#" class="sub-sub-category">دوربین عکاسی دیجیتال</a>
-                                                <a href="#" class="sub-sub-category">دوربین ورزشی و فیلم برداری</a>
+                                                <a href="#" class="sub-sub-category">دوربین ورزشی و فیلم
+                                                    برداری</a>
                                                 <a href="#" class="sub-sub-category">دوربین چاپ سریع</a>
                                                 <a href="#" class="sub-category">لوازم جانبی دوربین</a>
                                                 <a href="#" class="sub-sub-category">لنز</a>
@@ -194,7 +229,8 @@
 
                                             <section class="sublist-column col">
                                                 <a href="#" class="sub-category">تلسکوپ</a>
-                                                <a href="#" class="sub-category">پلی استیشن، ایکس باکس و بازی</a>
+                                                <a href="#" class="sub-category">پلی استیشن، ایکس باکس و
+                                                    بازی</a>
                                                 <a href="#" class="sub-category">کامپیوتر و تجهیزات جانبی</a>
                                                 <a href="#" class="sub-sub-category">تجهیزات مخصوی بازی</a>
                                                 <a href="#" class="sub-sub-category">مانیتور</a>
@@ -211,7 +247,8 @@
                                             <section class="sublist-column col">
                                                 <a href="#" class="sub-category">تبلت</a>
                                                 <a href="#" class="sub-category">شارژر تبلت و موبایل</a>
-                                                <a href="#" class="sub-category">کیف، کاور و لوازم جانبی تبلت</a>
+                                                <a href="#" class="sub-category">کیف، کاور و لوازم جانبی
+                                                    تبلت</a>
                                                 <a href="#" class="sub-category">باتری</a>
                                                 <a href="#" class="sub-category">دوربین های تحت شبکه</a>
                                                 <a href="#" class="sub-category">مودم و تجهیزات شبکه</a>
@@ -230,17 +267,22 @@
                                 <section class="sublist-item">
                                     <section class="sublist-item-toggle">خودرو ابزار و تجهیزات صنعتی</section>
                                     <section class="sublist-item-sublist">
-                                        <section class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
+                                        <section
+                                            class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
                                             <section class="sublist-column col">
                                                 <a href="#" class="sub-category">خودروهای ایرانی و خارجی</a>
                                                 <a href="#" class="sub-category">موتور سیکلت</a>
-                                                <a href="#" class="sub-category">لوازم جانبی خودرو و موتور سیکلت</a>
+                                                <a href="#" class="sub-category">لوازم جانبی خودرو و موتور
+                                                    سیکلت</a>
                                                 <a href="#" class="sub-sub-category">لوازم تزئینی</a>
                                                 <a href="#" class="sub-sub-category">سیستم صوتی و تصویری</a>
                                                 <a href="#" class="sub-sub-category">نظافت و نگهداری خودرو</a>
-                                                <a href="#" class="sub-sub-category">کلاه کاسکت و لوازم جانبی موتور</a>
-                                                <a href="#" class="sub-category">لوازم یدکی خودرو و موتور سیکلت</a>
-                                                <a href="#" class="sub-category">لوازم یدکی خودرو و موتور سیکلت</a>
+                                                <a href="#" class="sub-sub-category">کلاه کاسکت و لوازم جانبی
+                                                    موتور</a>
+                                                <a href="#" class="sub-category">لوازم یدکی خودرو و موتور
+                                                    سیکلت</a>
+                                                <a href="#" class="sub-category">لوازم یدکی خودرو و موتور
+                                                    سیکلت</a>
                                                 <a href="#" class="sub-sub-category">دیسک و صفحه کلاچ</a>
                                                 <a href="#" class="sub-sub-category">قاب موبایل</a>
                                                 <a href="#" class="sub-sub-category">جلوبندی و تعلیق</a>
@@ -250,19 +292,23 @@
                                             </section>
 
                                             <section class="sublist-column col">
-                                                <a href="#" class="sub-category">لوازم مصرفی خودرو و موتور سیکلت</a>
+                                                <a href="#" class="sub-category">لوازم مصرفی خودرو و موتور
+                                                    سیکلت</a>
                                                 <a href="#" class="sub-sub-category">لاستیک و تایر</a>
                                                 <a href="#" class="sub-sub-category">لنت ترمز</a>
                                                 <a href="#" class="sub-sub-category">روغن موتور و ضد یخ</a>
-                                                <a href="#" class="sub-sub-category">مکمل سوخت و روغن و انواع فیلتر</a>
+                                                <a href="#" class="sub-sub-category">مکمل سوخت و روغن و انواع
+                                                    فیلتر</a>
                                                 <a href="#" class="sub-category">ابزار برقی</a>
-                                                <a href="#" class="sub-sub-category">دریل، پیچ گوشتی برقی و شارژی</a>
+                                                <a href="#" class="sub-sub-category">دریل، پیچ گوشتی برقی و
+                                                    شارژی</a>
                                                 <a href="#" class="sub-sub-category">فرز و سنگ رومیزی</a>
                                                 <a href="#" class="sub-sub-category">موتور برق</a>
                                                 <a href="#" class="sub-sub-category">مکنده و دمنده</a>
                                                 <a href="#" class="sub-sub-category">کارواش</a>
                                                 <a href="#" class="sub-sub-category">کمپروسور و جک خودرو</a>
-                                                <a href="#" class="sub-sub-category">ابزار همه کاره برقی و شارژی</a>
+                                                <a href="#" class="sub-sub-category">ابزار همه کاره برقی و
+                                                    شارژی</a>
                                             </section>
 
                                             <section class="sublist-column col">
@@ -273,7 +319,8 @@
                                                 <a href="#" class="sub-sub-category">پیچ گوشتی و فازمتر</a>
                                                 <a href="#" class="sub-sub-category">نظم دهنده ابزار</a>
                                                 <a href="#" class="sub-sub-category">قاب موبایل</a>
-                                                <a href="#" class="sub-sub-category">متر، تراز، اندازه گیری قیق</a>
+                                                <a href="#" class="sub-sub-category">متر، تراز، اندازه گیری
+                                                    قیق</a>
                                                 <a href="#" class="sub-sub-category">لوازم روانکاری</a>
                                                 <a href="#" class="sub-sub-category">چسب صنعتی</a>
                                                 <a href="#" class="sub-category">لوازم و یزاق آلات صنعتی</a>
@@ -284,14 +331,16 @@
 
                                             <section class="sublist-column col">
                                                 <a href="#" class="sub-category">لوازم باغبانی</a>
-                                                <a href="#" class="sub-sub-category">قیچی، چاقو و ابزار باغبانی</a>
+                                                <a href="#" class="sub-sub-category">قیچی، چاقو و ابزار
+                                                    باغبانی</a>
                                                 <a href="#" class="sub-sub-category">بإر و تخم گیاهان</a>
                                                 <a href="#" class="sub-sub-category">تبر، بیل و کلنگ</a>
                                                 <a href="#" class="sub-sub-category">خاک، کود و آفت کش</a>
                                                 <a href="#" class="sub-category">نور و روشنایی</a>
                                                 <a href="#" class="sub-sub-category">لوستر و آباژور</a>
                                                 <a href="#" class="sub-sub-category">لامپ</a>
-                                                <a href="#" class="sub-sub-category">چندراهی برق و محافظ ولتاژ</a>
+                                                <a href="#" class="sub-sub-category">چندراهی برق و محافظ
+                                                    ولتاژ</a>
                                                 <a href="#" class="sub-category">تجهیزات و ایمنی و کار</a>
                                                 <a href="#" class="sub-sub-category">کفش ایمنی</a>
                                                 <a href="#" class="sub-category">حفاظتی و امنیتی</a>
@@ -304,7 +353,8 @@
                                 <section class="sublist-item">
                                     <section class="sublist-item-toggle">مد و پوشاک</section>
                                     <section class="sublist-item-sublist">
-                                        <section class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
+                                        <section
+                                            class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
                                             <section class="sublist-column col">
                                                 <a href="#" class="sub-category">مردانه</a>
                                                 <a href="#" class="sub-category">لباس مردانه</a>
@@ -377,7 +427,8 @@
                                 <section class="sublist-item">
                                     <section class="sublist-item-toggle">اسباب بازی، کودک و نوزاد</section>
                                     <section class="sublist-item-sublist">
-                                        <section class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
+                                        <section
+                                            class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
                                             <section class="sublist-column col">
                                                 <a href="#" class="sub-category">بهداشت و حمام کودک و نوزاد</a>
                                                 <a href="#" class="sub-sub-category">پوشک</a>
@@ -390,7 +441,8 @@
                                                 <a href="#" class="sub-sub-category">لباس کودک و لباس نوزادی</a>
                                                 <a href="#" class="sub-sub-category">کفش</a>
                                                 <a href="#" class="sub-sub-category">کفش ورزشی</a>
-                                                <a href="#" class="sub-sub-category">جوراب و پاپوش کودک و نوزاد</a>
+                                                <a href="#" class="sub-sub-category">جوراب و پاپوش کودک و
+                                                    نوزاد</a>
                                                 <a href="#" class="sub-sub-category">کلاه و پیشبند نوزاد</a>
                                             </section>
 
@@ -401,10 +453,13 @@
                                                 <a href="#" class="sub-sub-category">فکری و آموزشی</a>
                                                 <a href="#" class="sub-sub-category">پازل، لگو و ساختنی</a>
                                                 <a href="#" class="sub-sub-category">عروسک وفیگور</a>
-                                                <a href="#" class="sub-sub-category">اسپینر، ابزار شوخی و سرگرمی</a>
-                                                <a href="#" class="sub-sub-category">تفنگ، تیر و لوازم بازی جنگی</a>
+                                                <a href="#" class="sub-sub-category">اسپینر، ابزار شوخی و
+                                                    سرگرمی</a>
+                                                <a href="#" class="sub-sub-category">تفنگ، تیر و لوازم بازی
+                                                    جنگی</a>
                                                 <a href="#" class="sub-category">بازی و سرگرمی کودک</a>
-                                                <a href="#" class="sub-sub-category">ماشین بازی، موتور، سه چرخه</a>
+                                                <a href="#" class="sub-sub-category">ماشین بازی، موتور، سه
+                                                    چرخه</a>
                                                 <a href="#" class="sub-sub-category">دوچرخه</a>
                                                 <a href="#" class="sub-sub-category">دشک بازی و پارک بازی</a>
                                                 <a href="#" class="sub-sub-category">تاب و سرسره</a>
@@ -429,7 +484,8 @@
                                             <section class="sublist-column col">
                                                 <a href="#" class="sub-category">ملزومات گردش و سفر</a>
                                                 <a href="#" class="sub-sub-category">کالسکه و کریر</a>
-                                                <a href="#" class="sub-sub-category">صندلی خودرو کودک و نوزاد</a>
+                                                <a href="#" class="sub-sub-category">صندلی خودرو کودک و
+                                                    نوزاد</a>
                                                 <a href="#" class="sub-sub-category">ساک لوازم نوزاد</a>
                                                 <a href="#" class="sub-sub-category">لوازم جانبی گردش و سفر</a>
                                                 <a href="#" class="sub-sub-category">هندزفری بیسیم</a>
@@ -440,7 +496,8 @@
                                                 <a href="#" class="sub-sub-category">شورت آموزشی</a>
                                                 <a href="#" class="sub-category">غذاخوری</a>
                                                 <a href="#" class="sub-sub-category">صندلی غذاخوری</a>
-                                                <a href="#" class="sub-sub-category">شیشه شیر، سرلاک، داروخوری</a>
+                                                <a href="#" class="sub-sub-category">شیشه شیر، سرلاک،
+                                                    داروخوری</a>
                                             </section>
                                         </section>
                                     </section>
@@ -449,7 +506,8 @@
                                 <section class="sublist-item">
                                     <section class="sublist-item-toggle">کالاهای سوپرمارکتی</section>
                                     <section class="sublist-item-sublist">
-                                        <section class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
+                                        <section
+                                            class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
                                             <section class="sublist-column col">
                                                 <a href="#" class="sub-category">کالای اساسی و خوار و بار</a>
                                                 <a href="#" class="sub-sub-category">نان</a>
@@ -462,7 +520,8 @@
                                                 <a href="#" class="sub-sub-category">خیارشور و ترشیجات</a>
                                                 <a href="#" class="sub-sub-category">آبلیمو، آبغوره و سرکه</a>
                                                 <a href="#" class="sub-sub-category">ماکارونی، پاستا و رشته</a>
-                                                <a href="#" class="sub-sub-category">زعفران، زرشک و تزئینات غذا</a>
+                                                <a href="#" class="sub-sub-category">زعفران، زرشک و تزئینات
+                                                    غذا</a>
                                                 <a href="#" class="sub-sub-category">حبوبات و سویا</a>
                                             </section>
 
@@ -521,14 +580,16 @@
                                 <section class="sublist-item">
                                     <section class="sublist-item-toggle">زیبایی و سلامت</section>
                                     <section class="sublist-item-sublist">
-                                        <section class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
+                                        <section
+                                            class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
                                             <section class="sublist-column col">
                                                 <a href="#" class="sub-category">لوازم آرایشی</a>
                                                 <a href="#" class="sub-sub-category">آرایش چشم و ابرو</a>
                                                 <a href="#" class="sub-sub-category">آرایش لب</a>
                                                 <a href="#" class="sub-sub-category">آرایش صورت</a>
                                                 <a href="#" class="sub-sub-category">مواد آرایش مو</a>
-                                                <a href="#" class="sub-sub-category">سنگ پا، بهداشت و زیبایی ناخن</a>
+                                                <a href="#" class="sub-sub-category">سنگ پا، بهداشت و زیبایی
+                                                    ناخن</a>
                                                 <a href="#" class="sub-sub-category">تجهیزات جانبی آرایشی</a>
                                                 <a href="#" class="sub-category">لوازم بهداشتی</a>
                                                 <a href="#" class="sub-sub-category">کرم و مراقبت پوست</a>
@@ -545,7 +606,8 @@
                                                 <a href="#" class="sub-sub-category">سشوار</a>
                                                 <a href="#" class="sub-sub-category">اصلاح بدن آقایان</a>
                                                 <a href="#" class="sub-sub-category">اصلاح بدن بانوان</a>
-                                                <a href="#" class="sub-sub-category">اصلاح موی گوش، بینی و ابرو</a>
+                                                <a href="#" class="sub-sub-category">اصلاح موی گوش، بینی و
+                                                    ابرو</a>
                                                 <a href="#" class="sub-sub-category">برس پاک سازی</a>
                                                 <a href="#" class="sub-sub-category">اتو مو و حالت دهنده</a>
                                                 <a href="#" class="sub-sub-category">بیگودی و فرکننده</a>
@@ -563,7 +625,8 @@
                                                 <a href="#" class="sub-category">طلا، نقره و زیورآلات</a>
                                                 <a href="#" class="sub-sub-category">زیورآلات نقره زنانه</a>
                                                 <a href="#" class="sub-sub-category">زیورآلات طلا زنانه</a>
-                                                <a href="#" class="sub-sub-category">حلقه و انگشتر طلای زنانه</a>
+                                                <a href="#" class="sub-sub-category">حلقه و انگشتر طلای
+                                                    زنانه</a>
                                                 <a href="#" class="sub-sub-category">دستبند طلای زنانه</a>
                                                 <a href="#" class="sub-sub-category">گردنبند طلای زنانه</a>
                                                 <a href="#" class="sub-sub-category">گوشواره طلای زنانه</a>
@@ -574,7 +637,8 @@
                                                 <a href="#" class="sub-category">ابزار سلامت و طبی</a>
                                                 <a href="#" class="sub-sub-category">مچ بند و ساعت هوشمند</a>
                                                 <a href="#" class="sub-sub-category">ترازو</a>
-                                                <a href="#" class="sub-sub-category">کالای خواب و استراحت طبی</a>
+                                                <a href="#" class="sub-sub-category">کالای خواب و استراحت
+                                                    طبی</a>
                                                 <a href="#" class="sub-sub-category">تست قند خون</a>
                                                 <a href="#" class="sub-sub-category">تب سنج</a>
                                                 <a href="#" class="sub-sub-category">فشار سنج</a>
@@ -591,7 +655,8 @@
                                 <section class="sublist-item">
                                     <section class="sublist-item-toggle">خانه و آشپزخانه</section>
                                     <section class="sublist-item-sublist">
-                                        <section class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
+                                        <section
+                                            class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
                                             <section class="sublist-column col">
                                                 <a href="#" class="sub-category">صوتی و تصویری</a>
                                                 <a href="#" class="sub-sub-category">تلویزیون</a>
@@ -599,13 +664,15 @@
                                                 <a href="#" class="sub-sub-category">گیرنده دیجیتال تلویزیون</a>
                                                 <a href="#" class="sub-category">دکوراتیو</a>
                                                 <a href="#" class="sub-sub-category">مبلمان خانگی</a>
-                                                <a href="#" class="sub-sub-category">قاب موبایلدکوراسیون اداری</a>
+                                                <a href="#" class="sub-sub-category">قاب موبایلدکوراسیون
+                                                    اداری</a>
                                                 <a href="#" class="sub-sub-category">آینه</a>
                                                 <a href="#" class="sub-sub-category">پرده</a>
                                                 <a href="#" class="sub-sub-category">تابلو</a>
                                                 <a href="#" class="sub-sub-category">ساعت دیواری و رومیزی</a>
                                                 <a href="#" class="sub-sub-category">شمع، گل و گلدان</a>
-                                                <a href="#" class="sub-category">فرش ماشینی، دستباف و تابلوفرش</a>
+                                                <a href="#" class="sub-category">فرش ماشینی، دستباف و
+                                                    تابلوفرش</a>
                                             </section>
 
                                             <section class="sublist-column col">
@@ -617,11 +684,13 @@
                                                 <a href="#" class="sub-sub-category">جارو شارژی</a>
                                                 <a href="#" class="sub-sub-category">تلفن، بیسیم و سانترال</a>
                                                 <a href="#" class="sub-sub-category">کولر، پنکه و تصفیه هوا</a>
-                                                <a href="#" class="sub-sub-category">قهوه و چایساز، آبمیوه گیر</a>
+                                                <a href="#" class="sub-sub-category">قهوه و چایساز، آبمیوه
+                                                    گیر</a>
                                                 <a href="#" class="sub-sub-category">ترازوی آشپزخانه</a>
                                                 <a href="#" class="sub-sub-category">اتوبخار پرسی</a>
                                                 <a href="#" class="sub-category">حیوانات خانگی، غذا و لوازم</a>
-                                                <a href="#" class="sub-sub-category">آکواریوم، غذا و لوازم آبزیان</a>
+                                                <a href="#" class="sub-sub-category">آکواریوم، غذا و لوازم
+                                                    آبزیان</a>
                                             </section>
 
                                             <section class="sublist-column col">
@@ -636,7 +705,8 @@
                                                 <a href="#" class="sub-category">آشپزخانه</a>
                                                 <a href="#" class="sub-sub-category">سرویس ظروف پخت و پز</a>
                                                 <a href="#" class="sub-sub-category">فلاسک و کلمن</a>
-                                                <a href="#" class="sub-sub-category">کتری و قوری و لوازم سرو چای</a>
+                                                <a href="#" class="sub-sub-category">کتری و قوری و لوازم سرو
+                                                    چای</a>
                                                 <a href="#" class="sub-sub-category">ظروف یک بار مصرف</a>
                                             </section>
 
@@ -644,14 +714,16 @@
                                                 <a href="#" class="sub-category">مواد شوینده</a>
                                                 <a href="#" class="sub-sub-category">شوینده ظروف</a>
                                                 <a href="#" class="sub-sub-category">شوینده لباس</a>
-                                                <a href="#" class="sub-sub-category">اسپیکر موبایلتمیزکننده سطوح</a>
+                                                <a href="#" class="sub-sub-category">اسپیکر موبایلتمیزکننده
+                                                    سطوح</a>
                                                 <a href="#" class="sub-category">دستمال کاغذی</a>
                                                 <a href="#" class="sub-category">ملحفه، سرویس، لوازم خواب</a>
                                                 <a href="#" class="sub-category">حوله و وسایل حمام</a>
                                                 <a href="#" class="sub-category">پادری، کمد، لوازم اتاق خواب</a>
                                                 <a href="#" class="sub-category">لوازم دستشویی و روشویی</a>
                                                 <a href="#" class="sub-category">فندک و لوازم جانبی</a>
-                                                <a href="#" class="sub-category">گل، خاک و کود و لوازم باغبانی</a>
+                                                <a href="#" class="sub-category">گل، خاک و کود و لوازم
+                                                    باغبانی</a>
                                             </section>
                                         </section>
                                     </section>
@@ -670,7 +742,8 @@
                                                 <a href="#" class="sub-sub-category">آموزش موسیقی</a>
                                                 <a href="#" class="sub-sub-category">آموزش ورزش و سرگرمی</a>
                                                 <a href="#" class="sub-sub-category">آموزش زبان</a>
-                                                <a href="#" class="sub-sub-category">آموزش نرم افزار و کامپیوتر</a>
+                                                <a href="#" class="sub-sub-category">آموزش نرم افزار و
+                                                    کامپیوتر</a>
                                                 <a href="#" class="sub-category">نرم افزار</a>
                                                 <a href="#" class="sub-category">بازی کنسول و کامپیوتر</a>
                                                 <a href="#" class="sub-category">فیلم سینمایی، سریال و مستند</a>
@@ -679,10 +752,13 @@
 
                                             <section class="sublist-column col">
                                                 <a href="#" class="sub-category">لوازم التحریر</a>
-                                                <a href="#" class="sub-sub-category">لوازم اداری واقلام مصرفی</a>
-                                                <a href="#" class="sub-sub-category">کیف، کوله پشتی و جامدادی</a>
+                                                <a href="#" class="sub-sub-category">لوازم اداری واقلام
+                                                    مصرفی</a>
+                                                <a href="#" class="sub-sub-category">کیف، کوله پشتی و
+                                                    جامدادی</a>
                                                 <a href="#" class="sub-sub-category">چراغ مطالعه</a>
-                                                <a href="#" class="sub-sub-category">کاغذ کادو، پاکت و کارت هدیه</a>
+                                                <a href="#" class="sub-sub-category">کاغذ کادو، پاکت و کارت
+                                                    هدیه</a>
                                                 <a href="#" class="sub-sub-category">نوشت افزار</a>
                                                 <a href="#" class="sub-sub-category">دفتر و کاغذ</a>
                                                 <a href="#" class="sub-sub-category">خودکار و روان نویس</a>
@@ -695,7 +771,8 @@
 
                                             <section class="sublist-column col">
                                                 <a href="#" class="sub-category">آلات موسیقی</a>
-                                                <a href="#" class="sub-sub-category">لوازم جانبی ادوات موسیقی</a>
+                                                <a href="#" class="sub-sub-category">لوازم جانبی ادوات
+                                                    موسیقی</a>
                                                 <a href="#" class="sub-sub-category">گیتار</a>
                                                 <a href="#" class="sub-sub-category">کیبورد و ارگ</a>
                                                 <a href="#" class="sub-sub-category">پیانو دیجیتال</a>
@@ -703,7 +780,8 @@
                                                 <a href="#" class="sub-sub-category">تجهیزات استودیویی</a>
                                                 <a href="#" class="sub-sub-category">ویولن</a>
                                                 <a href="#" class="sub-sub-category">سازهای ایرانی</a>
-                                                <a href="#" class="sub-category">فرش ماشینی، دستباف، تابلو فرش</a>
+                                                <a href="#" class="sub-category">فرش ماشینی، دستباف، تابلو
+                                                    فرش</a>
                                                 <a href="#" class="sub-sub-category">فرش ماشینی</a>
                                                 <a href="#" class="sub-sub-category">فرش دستباف</a>
                                                 <a href="#" class="sub-sub-category">تابلو فرش</a>
@@ -714,14 +792,17 @@
                                                 <a href="#" class="sub-sub-category">کالاهای مسی</a>
                                                 <a href="#" class="sub-sub-category">سفال، سرامیک و چینی</a>
                                                 <a href="#" class="sub-sub-category">کیف چرمی</a>
-                                                <a href="#" class="sub-sub-category">ترمه، قلم کار و دستباف</a>
-                                                <a href="#" class="sub-sub-category">خاتم، منبت، حصیری و چوبی</a>
+                                                <a href="#" class="sub-sub-category">ترمه، قلم کار و
+                                                    دستباف</a>
+                                                <a href="#" class="sub-sub-category">خاتم، منبت، حصیری و
+                                                    چوبی</a>
                                                 <a href="#" class="sub-sub-category">تابلو و ساعت</a>
                                                 <a href="#" class="sub-sub-category">میناکاری</a>
                                                 <a href="#" class="sub-sub-category">فیروزه کوبی</a>
                                                 <a href="#" class="sub-sub-category">سوزن دوزی</a>
                                                 <a href="#" class="sub-sub-category">محصولات استخوانی</a>
-                                                <a href="#" class="sub-sub-category">جعبه و دست سازه های هنری</a>
+                                                <a href="#" class="sub-sub-category">جعبه و دست سازه های
+                                                    هنری</a>
                                             </section>
                                         </section>
                                     </section>
@@ -730,7 +811,8 @@
                                 <section class="sublist-item">
                                     <section class="sublist-item-toggle">ورزش و سفر</section>
                                     <section class="sublist-item-sublist">
-                                        <section class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
+                                        <section
+                                            class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
                                             <section class="sublist-column col">
                                                 <a href="#" class="sub-category">پوشاک ورزشی مردانه</a>
                                                 <a href="#" class="sub-category">پوشاک ورزشی زنانه</a>
@@ -751,13 +833,15 @@
                                                 <a href="#" class="sub-category">کوهنوردی و کمپینگ</a>
                                                 <a href="#" class="sub-sub-category">کفش کوهنوردی</a>
                                                 <a href="#" class="sub-sub-category">عصای کوهنوردی</a>
-                                                <a href="#" class="sub-sub-category">چراغ قوه و چراغ پیشانی</a>
+                                                <a href="#" class="sub-sub-category">چراغ قوه و چراغ
+                                                    پیشانی</a>
                                                 <a href="#" class="sub-sub-category">چاقو و ابزار چند کاره</a>
                                                 <a href="#" class="sub-sub-category">قمقمه و فلاسک</a>
                                                 <a href="#" class="sub-sub-category">چادر</a>
                                                 <a href="#" class="sub-sub-category">کیسه خواب</a>
                                                 <a href="#" class="sub-sub-category">زیرانداز سفری</a>
-                                                <a href="#" class="sub-category">لوازم جانبی کوهنوردی و سفر</a>
+                                                <a href="#" class="sub-category">لوازم جانبی کوهنوردی و
+                                                    سفر</a>
                                                 <a href="#" class="sub-category">چتر</a>
                                                 <a href="#" class="sub-category">ساک ورزشی</a>
                                                 <a href="#" class="sub-category">قمقمه و شیک</a>
@@ -766,11 +850,13 @@
                                             <section class="sublist-column col">
                                                 <a href="#" class="sub-category">لوازم ورزشی</a>
                                                 <a href="#" class="sub-category">ورزش های هوازی و بدنسازی</a>
-                                                <a href="#" class="sub-sub-category">تجهیزات جانبی ایروبیک و تناسب اندام</a>
+                                                <a href="#" class="sub-sub-category">تجهیزات جانبی ایروبیک و
+                                                    تناسب اندام</a>
                                                 <a href="#" class="sub-sub-category">طناب</a>
                                                 <a href="#" class="sub-sub-category">بارفیکس</a>
                                                 <a href="#" class="sub-sub-category">تردمیل</a>
-                                                <a href="#" class="sub-sub-category">لوازم پوششی و محافظتی ورزشی</a>
+                                                <a href="#" class="sub-sub-category">لوازم پوششی و محافظتی
+                                                    ورزشی</a>
                                                 <a href="#" class="sub-category">ورزش های توپی</a>
                                                 <a href="#" class="sub-sub-category">توپ</a>
                                                 <a href="#" class="sub-sub-category">راکت</a>
@@ -789,7 +875,8 @@
                                 <section class="sublist-item">
                                     <section class="sublist-item-toggle">محصولات بومی و محلی</section>
                                     <section class="sublist-item-sublist">
-                                        <section class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
+                                        <section
+                                            class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
                                             <section class="sublist-column col">
                                                 <a href="#" class="sub-category">خوراکی های بومی و محلی</a>
                                                 <a href="#" class="sub-sub-category">حلواشکری، ارده و کنجد</a>
@@ -798,7 +885,8 @@
                                                 <a href="#" class="sub-sub-category">عرقیات و گلاب اصیل</a>
                                                 <a href="#" class="sub-sub-category">ادویه و چاشنی محلی</a>
                                                 <a href="#" class="sub-sub-category">چای محلی</a>
-                                                <a href="#" class="sub-sub-category">زعفران، زرشک و تزئینات غذا</a>
+                                                <a href="#" class="sub-sub-category">زعفران، زرشک و تزئینات
+                                                    غذا</a>
                                                 <a href="#" class="sub-sub-category">سبزی خشک محلی</a>
                                                 <a href="#" class="sub-sub-category">حبوبات و سویای محلی</a>
                                                 <a href="#" class="sub-sub-category">قند و نبات محلی</a>
@@ -809,7 +897,8 @@
                                             <section class="sublist-column col">
                                                 <a href="#" class="sub-category">خانه و کاشانه بومی محلی</a>
                                                 <a href="#" class="sub-category">ظروف سنتی</a>
-                                                <a href="#" class="sub-sub-category">کاسه و کاسه بشقاب سنتی</a>
+                                                <a href="#" class="sub-sub-category">کاسه و کاسه بشقاب
+                                                    سنتی</a>
                                                 <a href="#" class="sub-sub-category">بشقاب سنتی</a>
                                                 <a href="#" class="sub-sub-category">پارچ سنتی</a>
                                                 <a href="#" class="sub-sub-category">لیوان سنتی</a>
@@ -860,10 +949,13 @@
 
 
                 <!--mobile view-->
-                <section class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="z-index: 9999999;">
+                <section class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+                    aria-labelledby="offcanvasExampleLabel" style="z-index: 9999999;">
                     <section class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasExampleLabel"><a class="text-decoration-none" href="index.html"><img src="assets/images/logo/8.png" alt="logo"></a></h5>
-                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        <h5 class="offcanvas-title" id="offcanvasExampleLabel"><a class="text-decoration-none"
+                                href="index.html"><img src="assets/images/logo/8.png" alt="logo"></a></h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
                     </section>
                     <section class="offcanvas-body">
 
@@ -881,331 +973,541 @@
                         <!-- start sidebar nav-->
                         <section class="sidebar-nav mt-2 px-3">
                             <section class="sidebar-nav-item">
-                                <span class="sidebar-nav-item-title">کالای دیجیتال <i class="fa fa-angle-left"></i></span>
+                                <span class="sidebar-nav-item-title">کالای دیجیتال <i
+                                        class="fa fa-angle-left"></i></span>
                                 <section class="sidebar-nav-sub-wrapper">
                                     <section class="sidebar-nav-sub-item">
-                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی
+                                                موبایل</a><i class="fa fa-angle-left"></i></span>
                                         <section class="sidebar-nav-sub-sub-wrapper">
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر
+                                                    نگهدارنده</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a>
+                                            </section>
                                         </section>
                                     </section>
                                     <section class="sidebar-nav-sub-item">
-                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی
+                                                موبایل</a><i class="fa fa-angle-left"></i></span>
                                         <section class="sidebar-nav-sub-sub-wrapper">
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر
+                                                    نگهدارنده</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a>
+                                            </section>
                                         </section>
                                     </section>
                                 </section>
                             </section>
                             <section class="sidebar-nav-item">
-                                <span class="sidebar-nav-item-title">خودرو ابزار و تجهیزات صنعتی <i class="fa fa-angle-left"></i></span>
+                                <span class="sidebar-nav-item-title">خودرو ابزار و تجهیزات صنعتی <i
+                                        class="fa fa-angle-left"></i></span>
                                 <section class="sidebar-nav-sub-wrapper">
                                     <section class="sidebar-nav-sub-item">
-                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی
+                                                موبایل</a><i class="fa fa-angle-left"></i></span>
                                         <section class="sidebar-nav-sub-sub-wrapper">
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر
+                                                    نگهدارنده</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a>
+                                            </section>
                                         </section>
                                     </section>
                                     <section class="sidebar-nav-sub-item">
-                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی
+                                                موبایل</a><i class="fa fa-angle-left"></i></span>
                                         <section class="sidebar-nav-sub-sub-wrapper">
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر
+                                                    نگهدارنده</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a>
+                                            </section>
                                         </section>
                                     </section>
                                 </section>
                             </section>
                             <section class="sidebar-nav-item">
-                                <span class="sidebar-nav-item-title">مد و پوشاک <i class="fa fa-angle-left"></i></span>
+                                <span class="sidebar-nav-item-title">مد و پوشاک <i
+                                        class="fa fa-angle-left"></i></span>
                                 <section class="sidebar-nav-sub-wrapper">
                                     <section class="sidebar-nav-sub-item">
-                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی
+                                                موبایل</a><i class="fa fa-angle-left"></i></span>
                                         <section class="sidebar-nav-sub-sub-wrapper">
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر
+                                                    نگهدارنده</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a>
+                                            </section>
                                         </section>
                                     </section>
                                     <section class="sidebar-nav-sub-item">
-                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی
+                                                موبایل</a><i class="fa fa-angle-left"></i></span>
                                         <section class="sidebar-nav-sub-sub-wrapper">
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر
+                                                    نگهدارنده</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a>
+                                            </section>
                                         </section>
                                     </section>
                                 </section>
                             </section>
                             <section class="sidebar-nav-item">
-                                <span class="sidebar-nav-item-title">اسباب بازی، کودک و نوزاد <i class="fa fa-angle-left"></i></span>
+                                <span class="sidebar-nav-item-title">اسباب بازی، کودک و نوزاد <i
+                                        class="fa fa-angle-left"></i></span>
                                 <section class="sidebar-nav-sub-wrapper">
                                     <section class="sidebar-nav-sub-item">
-                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی
+                                                موبایل</a><i class="fa fa-angle-left"></i></span>
                                         <section class="sidebar-nav-sub-sub-wrapper">
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر
+                                                    نگهدارنده</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a>
+                                            </section>
                                         </section>
                                     </section>
                                     <section class="sidebar-nav-sub-item">
-                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی
+                                                موبایل</a><i class="fa fa-angle-left"></i></span>
                                         <section class="sidebar-nav-sub-sub-wrapper">
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر
+                                                    نگهدارنده</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a>
+                                            </section>
                                         </section>
                                     </section>
                                 </section>
                             </section>
                             <section class="sidebar-nav-item">
-                                <span class="sidebar-nav-item-title">کالاهای سوپرمارکتی <i class="fa fa-angle-left"></i></span>
+                                <span class="sidebar-nav-item-title">کالاهای سوپرمارکتی <i
+                                        class="fa fa-angle-left"></i></span>
                                 <section class="sidebar-nav-sub-wrapper">
                                     <section class="sidebar-nav-sub-item">
-                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی
+                                                موبایل</a><i class="fa fa-angle-left"></i></span>
                                         <section class="sidebar-nav-sub-sub-wrapper">
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر
+                                                    نگهدارنده</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a>
+                                            </section>
                                         </section>
                                     </section>
                                     <section class="sidebar-nav-sub-item">
-                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی
+                                                موبایل</a><i class="fa fa-angle-left"></i></span>
                                         <section class="sidebar-nav-sub-sub-wrapper">
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر
+                                                    نگهدارنده</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a>
+                                            </section>
                                         </section>
                                     </section>
                                 </section>
                             </section>
                             <section class="sidebar-nav-item">
-                                <span class="sidebar-nav-item-title">زیبایی و سلامت <i class="fa fa-angle-left"></i></span>
+                                <span class="sidebar-nav-item-title">زیبایی و سلامت <i
+                                        class="fa fa-angle-left"></i></span>
                                 <section class="sidebar-nav-sub-wrapper">
                                     <section class="sidebar-nav-sub-item">
-                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی
+                                                موبایل</a><i class="fa fa-angle-left"></i></span>
                                         <section class="sidebar-nav-sub-sub-wrapper">
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر
+                                                    نگهدارنده</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a>
+                                            </section>
                                         </section>
                                     </section>
                                     <section class="sidebar-nav-sub-item">
-                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی
+                                                موبایل</a><i class="fa fa-angle-left"></i></span>
                                         <section class="sidebar-nav-sub-sub-wrapper">
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر
+                                                    نگهدارنده</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a>
+                                            </section>
                                         </section>
                                     </section>
                                 </section>
                             </section>
                             <section class="sidebar-nav-item">
-                                <span class="sidebar-nav-item-title">خانه و آشپزخانه <i class="fa fa-angle-left"></i></span>
+                                <span class="sidebar-nav-item-title">خانه و آشپزخانه <i
+                                        class="fa fa-angle-left"></i></span>
                                 <section class="sidebar-nav-sub-wrapper">
                                     <section class="sidebar-nav-sub-item">
-                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی
+                                                موبایل</a><i class="fa fa-angle-left"></i></span>
                                         <section class="sidebar-nav-sub-sub-wrapper">
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر
+                                                    نگهدارنده</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a>
+                                            </section>
                                         </section>
                                     </section>
                                     <section class="sidebar-nav-sub-item">
-                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی
+                                                موبایل</a><i class="fa fa-angle-left"></i></span>
                                         <section class="sidebar-nav-sub-sub-wrapper">
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر
+                                                    نگهدارنده</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a>
+                                            </section>
                                         </section>
                                     </section>
                                 </section>
                             </section>
                             <section class="sidebar-nav-item">
-                                <span class="sidebar-nav-item-title">کتاب، لوازم تحریر و هنر <i class="fa fa-angle-left"></i></span>
+                                <span class="sidebar-nav-item-title">کتاب، لوازم تحریر و هنر <i
+                                        class="fa fa-angle-left"></i></span>
                                 <section class="sidebar-nav-sub-wrapper">
                                     <section class="sidebar-nav-sub-item">
-                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی
+                                                موبایل</a><i class="fa fa-angle-left"></i></span>
                                         <section class="sidebar-nav-sub-sub-wrapper">
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر
+                                                    نگهدارنده</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a>
+                                            </section>
                                         </section>
                                     </section>
                                     <section class="sidebar-nav-sub-item">
-                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی
+                                                موبایل</a><i class="fa fa-angle-left"></i></span>
                                         <section class="sidebar-nav-sub-sub-wrapper">
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر
+                                                    نگهدارنده</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a>
+                                            </section>
                                         </section>
                                     </section>
                                 </section>
                             </section>
                             <section class="sidebar-nav-item">
-                                <span class="sidebar-nav-item-title">ورزش و سفر <i class="fa fa-angle-left"></i></span>
+                                <span class="sidebar-nav-item-title">ورزش و سفر <i
+                                        class="fa fa-angle-left"></i></span>
                                 <section class="sidebar-nav-sub-wrapper">
                                     <section class="sidebar-nav-sub-item">
-                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی
+                                                موبایل</a><i class="fa fa-angle-left"></i></span>
                                         <section class="sidebar-nav-sub-sub-wrapper">
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر
+                                                    نگهدارنده</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a>
+                                            </section>
                                         </section>
                                     </section>
                                     <section class="sidebar-nav-sub-item">
-                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی
+                                                موبایل</a><i class="fa fa-angle-left"></i></span>
                                         <section class="sidebar-nav-sub-sub-wrapper">
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر
+                                                    نگهدارنده</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a>
+                                            </section>
                                         </section>
                                     </section>
                                 </section>
                             </section>
                             <section class="sidebar-nav-item">
-                                <span class="sidebar-nav-item-title">محصولات بومی و محلی <i class="fa fa-angle-left"></i></span>
+                                <span class="sidebar-nav-item-title">محصولات بومی و محلی <i
+                                        class="fa fa-angle-left"></i></span>
                                 <section class="sidebar-nav-sub-wrapper">
                                     <section class="sidebar-nav-sub-item">
-                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی
+                                                موبایل</a><i class="fa fa-angle-left"></i></span>
                                         <section class="sidebar-nav-sub-sub-wrapper">
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر
+                                                    نگهدارنده</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a>
+                                            </section>
                                         </section>
                                     </section>
                                     <section class="sidebar-nav-sub-item">
-                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی
+                                                موبایل</a><i class="fa fa-angle-left"></i></span>
                                         <section class="sidebar-nav-sub-sub-wrapper">
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a>
+                                            </section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب
+                                                    موبایل</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر
+                                                    نگهدارنده</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر
+                                                    بیسیم</a></section>
+                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a>
+                                            </section>
                                         </section>
                                     </section>
                                 </section>

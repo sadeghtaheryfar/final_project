@@ -23,10 +23,10 @@ class StoreOrderRequest extends FormRequest
     {
         return [
             'user_id' => 'required|bigint|integer',
-        'payment_id' => 'required|bigint|integer',
-        'delivery_id'=>'required|bigint|integer',
-        'order_id' => 'required|bigint|integer',
-           'product_id' => 'required|bigint|integer',
+            'payment_id' => 'required|bigint|integer',
+            'delivery_id' => 'required|bigint|integer',
+            'order_id' => 'required|bigint|integer',
+            'product_id' => 'required|bigint|integer',
         ];
     }
 }

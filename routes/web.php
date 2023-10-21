@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\MyProfileController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\admin\PannleController;
@@ -16,9 +17,12 @@ use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\OfflinePaymentController;
 use App\Http\Controllers\Admin\DiscountCodeController;
+use App\Http\Controllers\Admin\EmailController;
+use App\Http\Controllers\Admin\NotifacationController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\ProductFeatureController;
 use App\Http\Controllers\Admin\ProductCategoryController;
+use App\Http\Controllers\Admin\SMSController;
 use App\Http\Controllers\Auth\Customer\LoginRegisterController;
 
 /*
@@ -37,6 +41,13 @@ Route::get('/', [HomeController::class,'index'])->name('home');
 Route::prefix('admin')->name('admin.')->middleware('auth','VerifyAdmin')->group(function () {
     Route::get('/', PannleController::class);
     Route::resource('product', ProductController::class);
+    Route::resource('users', AdminController::class);
+    Route::get('email/send/{email}', [EmailController::class,'SendEmail'])->name('email.SendEmail');
+    Route::get('sms/send/{sms}', [SMSController::class,'SendSMS'])->name('sms.SendSMS');
+    Route::resource('sms', SMSController::class);
+    Route::resource('email', EmailController::class);
+    Route::get('admins', [AdminController::class,'admins'])->name('users.admins');
+    Route::get('notifacations', [NotifacationController::class,'index'])->name('notifacations.index');
     Route::resource('banners', BannerController::class);
     Route::resource('category', ProductCategoryController::class);
     Route::resource('order', OrderController::class);
@@ -62,6 +73,7 @@ Route::namespace('Auth.')->group(function () {
 
     Route::get('auth-otp/{otp}', [LoginRegisterController::class, 'loginConfirmForm'])->name('auth.customer.login-confirm-form');
     Route::post('auth-otp/{otp}', [LoginRegisterController::class, 'loginConfirmStore'])->name('auth.customer.login-confirm-store');
+    Route::get('auth-otp-resend/{otp}', [LoginRegisterController::class, 'loginResendStore'])->name('auth.customer.login-resend-store');
 });
 
 

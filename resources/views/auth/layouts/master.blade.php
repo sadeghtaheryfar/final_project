@@ -11,5 +11,6 @@
 
 
 @include('auth.layouts.scripts')
+@yield('script')
 </body>
 </html>
