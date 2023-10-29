@@ -63,6 +63,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth','VerifyAdmin')->group(
     Route::get('comment/change/{comment}', [CommentController::class, 'change'])->name('comment.change');
     Route::resource('comment', CommentController::class);
     Route::resource('product-category', ProductCategoryController::class);
+    Route::resource('yicket-category', ProductCategoryController::class);
     Route::resource('discount-code', DiscountCodeController::class);
 });
 
