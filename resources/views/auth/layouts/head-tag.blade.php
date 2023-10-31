@@ -2,6 +2,6 @@
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-@include('auth.layouts.styles')
+ @include('auth.layouts.styles')
 
-<title>@yield('title' , 'عنوان')</title>
+ <title>@yield('title', 'عنوان')</title>
