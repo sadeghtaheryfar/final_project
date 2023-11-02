@@ -75,7 +75,7 @@ class TicketAdminsController extends Controller
     {
         $inputs = $request->all();
         $ticketAdmin = TicketAdmins::find($ticketAdmin);
-        if($ticketAdmin->user_id === $inputs['user_id'])
+        if($ticketAdmin->user_id == $inputs['user_id'])
         {
             $ticketAdmin->update($inputs);
         }else{

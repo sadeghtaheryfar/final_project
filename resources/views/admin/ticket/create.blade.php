@@ -18,6 +18,11 @@
             <form method="post" action="" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
+                    <label for="subject">subject</label>
+                    <input class="form-control" id="subject" name="subject" placeholder="subject ..." rows="5" required autofocus>
+                </div>
+
+                <div class="form-group">
                     <label for="introduction">body</label>
                     <textarea class="form-control" id="body" name="body" placeholder="body ..." rows="5" required autofocus></textarea>
                 </div>

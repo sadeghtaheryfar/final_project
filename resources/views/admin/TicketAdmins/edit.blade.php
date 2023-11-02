@@ -28,8 +28,8 @@
                 <div class="form-group">
                     <label for="status">status</label>
                     <select name="status" id="status" class="form-control" required autofocus>
-                            <option value="0" @if ($TicketAdmin->status == 1) selected @endif>enable</option>
-                            <option value="1" @if ($TicketAdmin->status == 0) selected @endif>disable</option>
+                            <option value="1" @if ($TicketAdmin->status == 1) selected @endif>enable</option>
+                            <option value="0" @if ($TicketAdmin->status == 0) selected @endif>disable</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary btn-sm">Store</button>

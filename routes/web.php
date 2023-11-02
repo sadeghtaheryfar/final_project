@@ -23,6 +23,10 @@ use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\ProductFeatureController;
 use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\SMSController;
+use App\Http\Controllers\Admin\TicketAdminsController;
+use App\Http\Controllers\Admin\TicketCategoriesController;
+use App\Http\Controllers\admin\TicketController;
+use App\Http\Controllers\Admin\TicketPrioritiesController;
 use App\Http\Controllers\Auth\Customer\LoginRegisterController;
 
 /*
@@ -41,6 +45,12 @@ Route::get('/', [HomeController::class,'index'])->name('home');
 Route::prefix('admin')->name('admin.')->middleware('auth','VerifyAdmin')->group(function () {
     Route::get('/', PannleController::class);
     Route::resource('product', ProductController::class);
+    Route::get('tickets/close', [TicketController::class,'close'])->name('tickets.close');
+    Route::get('tickets/open', [TicketController::class,'open'])->name('tickets.open');
+    Route::resource('tickets', TicketController::class);
+    Route::resource('tickets-admins', TicketAdminsController::class);
+    Route::resource('tickets-category', TicketCategoriesController::class);
+    Route::resource('tickets-priorities', TicketPrioritiesController::class);
     Route::resource('users', AdminController::class);
     Route::get('email/send/{email}', [EmailController::class,'SendEmail'])->name('email.SendEmail');
     Route::get('sms/send/{sms}', [SMSController::class,'SendSMS'])->name('sms.SendSMS');

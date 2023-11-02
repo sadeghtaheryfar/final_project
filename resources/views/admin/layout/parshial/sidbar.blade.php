@@ -35,4 +35,16 @@
     <section class="sidebar-link">
         <a href="{{ route('admin.email.index') }}">Email Notifications</a>
     </section>
+    <section class="sidebar-link">
+        <a href="{{ route('admin.tickets-admins.index') }}">Ticket Admins</a>
+    </section>
+    <section class="sidebar-link">
+        <a href="{{ route('admin.tickets-priorities.index') }}">Ticket Priorities</a>
+    </section>
+    <section class="sidebar-link">
+        <a href="{{ route('admin.tickets-category.index') }}">Ticket Categories</a>
+    </section>
+    <section class="sidebar-link">
+        <a href="{{ route('admin.tickets.index') }}">Tickets</a>
+    </section>
 </section>

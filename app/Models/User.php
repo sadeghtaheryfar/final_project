@@ -58,4 +58,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(OfflinePayment::class);
     }
+
+    public function tickets()
+    {
+        return $this->hasMany(Tickets::class);
+    }
 }

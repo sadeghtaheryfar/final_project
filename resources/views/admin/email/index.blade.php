@@ -27,7 +27,7 @@
                         <td>{{ $itememail->id }}</td>
                         <td>{{ $itememail->title }}</td>
                         <td>{{ ($itememail->status == 1) ? "فعال" : "غیر فعال" }}</td>
-                        <td>{{ $itememail->published_at }}</td>
+                        <td>{{ jalaliDate($itememail->published_at) }}</td>
                         <td class="d-flex">
                             <a href="{{ route('admin.email.SendEmail',$itememail) }}" class="btn btn-primary btn-sm mr-2">Send Now</a>
 

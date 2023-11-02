@@ -106,8 +106,8 @@
                 <div class="form-group">
                     <label for="cat_id">status</label>
                     <select name="category_id" id="category_id" class="form-control" required autofocus>
-                        <option value="0">بسته</option>
-                        <option value="1">باز</option>
+                        <option value="0" @if ($ticket->status == 0) selected @endif>بسته</option>
+                        <option value="1" @if ($ticket->status == 1) selected @endif>باز</option>
                     </select>
                 </div>
 
@@ -120,16 +120,32 @@
             </form>
 
             <div class="box-item-ticketPage" dir="rtl">
-                <div class="item send">
-                    <div class="time"><span>دوشنبه, 22 خرداد 1402</span></div>
-                    <div class="message"><span>awfawf</span></div>
-                    <div class="file"><a href="http://server.elfiro.com/">فایل</a></div>
-                </div>
+
+
+                @foreach ($TicketsAnswear as $item)
+                    @if ($item->reference_id === null)
+                        <div class="item recive">
+                            <div class="time"><span>{{ jalalidate("$item->created_at") }}</span></div>
+                            <div class="message">
+                                <p>{!! $item->description !!}</p>
+                            </div>
+                            <div class="file"><a href="http://server.elfiro.com/htp:awfa awf/awf">فایل</a></div>
+                        </div>
+                    @else
+                        <div class="item send">
+                            <div class="time"><span>{{ jalalidate("$item->created_at") }}</div>
+                            <div class="message">
+                                <p>{!! $item->description !!}</p>
+                            </div>
+                            <div class="file"><a href="http://server.elfiro.com/">فایل</a></div>
+                        </div>
+                    @endif
+                @endforeach
 
                 <div class="item recive">
-                    <div class="time"><span>دوشنبه, 22 خرداد 1402</span></div>
+                    <div class="time"><span>{{ jalalidate("$ticket->created_at") }}</span></div>
                     <div class="message">
-                        <p>awfawf</p>
+                        {!! $ticket->description !!}
                     </div>
                     <div class="file"><a href="http://server.elfiro.com/htp:awfa awf/awf">فایل</a></div>
                 </div>

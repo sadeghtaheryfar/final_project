@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Tickets;
 
 class TicketController extends Controller
 {
@@ -12,18 +13,26 @@ class TicketController extends Controller
      */
     public function open()
     {
-        //
+        $tickets = Tickets::where("ticket_id",null)->where("status",1)->get();
+        return view('admin.ticket.index',compact('tickets'));
     }
 
     public function close()
     {
-        //
+        $tickets = Tickets::where("ticket_id",null)->where("status",0)->get();
+        return view('admin.ticket.index',compact('tickets'));
     }
 
 
     public function index()
     {
-        return view('admin.ticket.index');
+        $tickets = Tickets::where("ticket_id",null)->get();
+        foreach($tickets as $ticket)
+        {
+            $ticket->seen = 1;
+            $ticket->update();
+        }
+        return view('admin.ticket.index',compact('tickets'));
     }
 
     /**
@@ -45,9 +54,10 @@ class TicketController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show(Tickets $ticket)
     {
-        return view('admin.ticket.show');
+        $TicketsAnswear = Tickets::where("ticket_id","!=",null)->get();
+        return view('admin.ticket.show',compact('ticket','TicketsAnswear'));
     }
 
     /**
