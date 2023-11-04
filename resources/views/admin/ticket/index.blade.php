@@ -1,17 +1,17 @@
 @extends('admin.layout.master')
 
 @section('title')
-tickets
+    tickets
 @endsection
 
 @section('content')
     <section class="mb-2 d-flex justify-content-between align-items-center">
         <h2 class="h4">tickets</h2>
         <div>
-            <a href="{{ route("admin.tickets.index") }}" class="btn btn-info btn-sm">all</a>
-            <a href="{{ route("admin.tickets.open") }}" class="btn btn-primary btn-sm">open</a>
-            <a href="{{ route("admin.tickets.close") }}" class="btn btn-danger btn-sm">close</a>
-            <a href="{{ route("admin.tickets.create") }}" class="btn btn-sm btn-success ml-3">Create</a>
+            <a href="{{ route('admin.tickets.index') }}" class="btn btn-info btn-sm">all</a>
+            <a href="{{ route('admin.tickets.open') }}" class="btn btn-primary btn-sm">open</a>
+            <a href="{{ route('admin.tickets.close') }}" class="btn btn-danger btn-sm">close</a>
+            <a href="{{ route('admin.tickets.create') }}" class="btn btn-sm btn-success ml-3">Create</a>
         </div>
     </section>
 
@@ -21,24 +21,24 @@ tickets
                 <tr>
                     <th>#</th>
                     <th>title</th>
-                    <th>body</th>
                     <th>user</th>
+                    <th>time</th>
                     <th>status</th>
                     <th>setting</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($tickets as $ticket)
-                <tr>
-                    <td>{{ $ticket->id }}</td>
-                    <td>{{ $ticket->subject }}</td>
-                    <td>{{ $ticket->description }}</td>
-                    <td>{{ ($ticket->user->email . " - " . $ticket->user->mobile )}}</td>
-                    <td>{{ ($ticket->status === 0) ? "close" : "open" }}</td>
-                    <td class="d-flex">
-                        <a href="{{ route('admin.tickets.show',$ticket) }}" class="btn btn-info btn-sm">Show</a>
+                    <tr>
+                        <td>{{ $ticket->id }}</td>
+                        <td>{{ $ticket->subject }}</td>
+                        <td>{{ $ticket->user->email . ' - ' . $ticket->user->mobile }}</td>
+                        <td>{{ jalaliDate($ticket->created_at_at) }}</td>
+                        <td>{{ $ticket->status === 0 ? 'close' : 'open' }}</td>
+                        <td class="d-flex">
+                            <a href="{{ route('admin.tickets.show', $ticket) }}" class="btn btn-info btn-sm">Show</a>
 
-                        {{-- <a href="{{ route('admin.gallery',$product) }}" class="btn btn-info btn-sm ml-2">Gallery</a>
+                            {{-- <a href="{{ route('admin.gallery',$product) }}" class="btn btn-info btn-sm ml-2">Gallery</a>
 
                         <a href="{{ route('admin.feature',$product) }}" class="btn btn-info btn-sm ml-2">Feature</a>
 
@@ -47,8 +47,8 @@ tickets
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm ml-2">Delete</button>
                         </form> --}}
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>

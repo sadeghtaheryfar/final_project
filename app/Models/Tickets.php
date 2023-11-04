@@ -14,6 +14,8 @@ class Tickets extends Model
 {
     use HasFactory,SoftDeletes;
 
+    protected $guarded = ['id','created_at','updated_at','deleted_at'];
+
     public function user()
     {
         return $this->belongsTo(User::class,'user_id');

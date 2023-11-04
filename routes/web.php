@@ -28,6 +28,8 @@ use App\Http\Controllers\Admin\TicketCategoriesController;
 use App\Http\Controllers\admin\TicketController;
 use App\Http\Controllers\Admin\TicketPrioritiesController;
 use App\Http\Controllers\Auth\Customer\LoginRegisterController;
+use App\Http\Controllers\MyTicketsController;
+use App\Models\MyTickets;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +93,7 @@ Route::namespace('Auth.')->group(function () {
 Route::get('/myProfile/editMyProfile', [myProfileController::class, 'editMyProfile'])->name('myProfile.editMyProfile')->middleware('auth');
 Route::put('/myProfile/updateMyProfile', [myProfileController::class, 'updateMyProfile'])->name('myProfile.updateMyProfile')->middleware('auth');
 Route::get('/myProfile', [myProfileController::class, 'index'])->name('myProfile')->middleware('auth');
+Route::resource('myTickets', MyTicketsController::class)->middleware('auth');
 Route::get('/myOrders/{filter}', [myProfileController::class, 'myOrders'])->name('myOrders')->middleware('auth');
 Route::get('myOrder/myOrderItems/{order}', [myProfileController::class, 'myOrderItems'])->name('myOrder.myOrderItems')->middleware('auth');
 Route::get('/myFavorites', [myProfileController::class, 'myFavorites'])->name('myFavorites')->middleware('auth');

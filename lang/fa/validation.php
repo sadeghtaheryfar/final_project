@@ -157,5 +157,7 @@ return [
         "priority_id"               => "اولویت",
         "category_id"               => "دسته بندی",
         "user_id"               => "آیدی کاربر",
+        "subject"               => "عنوان",
+        "status"               => "وضعیت",
     ],
 ];

@@ -17,7 +17,6 @@ class MyProfileController extends Controller
 {
     public function index()
     {
-
         return view('app.myProfile');
     }
 

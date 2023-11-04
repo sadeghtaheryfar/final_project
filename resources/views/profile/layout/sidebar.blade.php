@@ -18,9 +18,12 @@
         <span class="sidebar-nav-item-title"><a class="p-3" href="{{ route('myProfile') }}">ویرایش حساب</a></span>
     </section>
     <section class="sidebar-nav-item">
+        <span class="sidebar-nav-item-title"><a class="p-3" href="{{ route('myTickets.index') }}">تیکت ها</a></span>
+    </section>
+    <section class="sidebar-nav-item">
         <form action="{{ route('logout') }}" method="post">
             @csrf
-            <button type="submit" class="sidebar-nav-item-title border-0 bg-transparent">خروج از حساب کاربری</button>
+            <button type="submit" class="sidebar-nav-item-title border-0 bg-transparent p-3">خروج از حساب کاربری</button>
         </form>
     </section>
 
