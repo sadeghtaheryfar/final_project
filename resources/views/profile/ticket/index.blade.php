@@ -55,7 +55,7 @@
                                             <td>{{ $ticket->subject }}</td>
                                             <td>{{ $ticket->user->email . ' - ' . $ticket->user->mobile }}</td>
                                             <td>{{ $ticket->status === 0 ? 'بسته' : 'باز' }}</td>
-                                            <td>{{ jalaliDate($ticket->created_at_at) }}</td>
+                                            <td>{{ jalaliDate($ticket->created_at) }}</td>
                                             <td class="d-flex">
                                                 <a href="{{ route('myTickets.show', $ticket) }}"
                                                     class="btn btn-info btn-sm">نمایش</a>

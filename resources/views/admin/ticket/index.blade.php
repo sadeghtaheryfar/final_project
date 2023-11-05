@@ -33,20 +33,16 @@
                         <td>{{ $ticket->id }}</td>
                         <td>{{ $ticket->subject }}</td>
                         <td>{{ $ticket->user->email . ' - ' . $ticket->user->mobile }}</td>
-                        <td>{{ jalaliDate($ticket->created_at_at) }}</td>
+                        <td>{{ jalaliDate($ticket->created_at) }}</td>
                         <td>{{ $ticket->status === 0 ? 'close' : 'open' }}</td>
                         <td class="d-flex">
                             <a href="{{ route('admin.tickets.show', $ticket) }}" class="btn btn-info btn-sm">Show</a>
 
-                            {{-- <a href="{{ route('admin.gallery',$product) }}" class="btn btn-info btn-sm ml-2">Gallery</a>
-
-                        <a href="{{ route('admin.feature',$product) }}" class="btn btn-info btn-sm ml-2">Feature</a>
-
-                        <form action="{{ route('admin.product.destroy',$product) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm ml-2">Delete</button>
-                        </form> --}}
+                            <form action="{{ route('admin.tickets.destroy', $ticket) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm ml-2">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

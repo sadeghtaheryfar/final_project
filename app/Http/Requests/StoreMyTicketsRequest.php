@@ -25,7 +25,8 @@ class StoreMyTicketsRequest extends FormRequest
             'priority_id' => 'required|numeric|exists:ticket_priorities,id',
             'category_id' => 'required|numeric|exists:ticket_categories,id',
             'subject' => 'required',
-            'description' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
+            'description' => 'required|max:120|min:2',
+            'file' => 'mimes:jpeg,png,txt,jpg',
         ];
     }
 }

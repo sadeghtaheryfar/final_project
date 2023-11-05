@@ -137,6 +137,22 @@
                                 </div>
 
                                 <div class="form-group my-4">
+                                    <label for="priority">دسته بندی</label>
+                                    <select name="priority" id="priority" class="form-control" disabled autofocus>
+                                        <option value="{{ $myTicket->category->id }}">{{ $myTicket->category->name }}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group my-4">
+                                    <label for="priority">اولیت</label>
+                                    <select name="priority" id="priority" class="form-control" disabled autofocus>
+                                        <option value="{{ $myTicket->category->id }}">{{ $myTicket->category->name }}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group my-4">
                                     <label for="status">وضعیت</label>
                                     <select name="status" id="status" class="form-control" required autofocus>
                                         <option value="0" @if ($myTicket->status == 0) selected @endif>بسته
@@ -164,8 +180,11 @@
                                             <div class="message">
                                                 <p>{!! $item->description !!}</p>
                                             </div>
-                                            <div class="file"><a href="http://server.elfiro.com/htp:awfa awf/awf">فایل</a>
-                                            </div>
+                                            @if ($item->file)
+                                                <div class="file">
+                                                    <a target="_blank" href="{{ asset($item->file->file_path) }}">فایل</a>
+                                                </div>
+                                            @endif
                                         </div>
                                     @else
                                         <div class="item send">
@@ -173,7 +192,11 @@
                                             <div class="message">
                                                 <p>{!! $item->description !!}</p>
                                             </div>
-                                            <div class="file"><a href="http://server.elfiro.com/">فایل</a></div>
+                                            @if ($item->file)
+                                                <div class="file">
+                                                    <a target="_blank" href="{{ asset($item->file->file_path) }}">فایل</a>
+                                                </div>
+                                            @endif
                                         </div>
                                     @endif
                                 @endforeach
@@ -183,7 +206,11 @@
                                     <div class="message">
                                         {!! $myTicket->description !!}
                                     </div>
-                                    <div class="file"><a href="http://server.elfiro.com/htp:awfa awf/awf">فایل</a></div>
+                                    @if ($myTicket->file)
+                                        <div class="file">
+                                            <a target="_blank" href="{{ asset($myTicket->file->file_path) }}">فایل</a>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </section>

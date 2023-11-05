@@ -83,7 +83,7 @@
                                 </div>
 
                                 <div class="form-group my-2">
-                                    <label for="image">فایل (jpeg,jpg,png,txt)</label>
+                                    <label for="file">فایل (jpeg,jpg,png,txt)</label>
                                     <input type="file" id="file" name="file" class="form-control-file" autofocus>
                                 </div>
 
