@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Permission;
+use App\Tratis\Permissions\HasPermissionTrait;
 use Laravel\Sanctum\HasApiTokens;
 use Nagy\LaravelRating\Traits\CanRate;
 use Illuminate\Notifications\Notifiable;
@@ -12,7 +14,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable , SoftDeletes , CanRate, SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable , SoftDeletes , CanRate, SoftDeletes,HasPermissionTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -62,5 +64,15 @@ class User extends Authenticatable
     public function tickets()
     {
         return $this->hasMany(Tickets::class);
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class);
     }
 }

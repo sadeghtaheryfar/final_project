@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Product_category;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Services\ImageUploadService;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
@@ -17,8 +18,9 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+        dd($user->hasRole('admin_product'));
         $products = Product::all();
-
         return view('admin.product.index',compact('products'));
     }
 

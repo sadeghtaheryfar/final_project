@@ -47,4 +47,10 @@
     <section class="sidebar-link">
         <a href="{{ route('admin.tickets.index') }}">Tickets</a>
     </section>
+    <section class="sidebar-link">
+        <a href="{{ route('admin.role.index') }}">Role</a>
+    </section>
+    <section class="sidebar-link">
+        <a href="{{ route('admin.permission.index') }}">Permission</a>
+    </section>
 </section>

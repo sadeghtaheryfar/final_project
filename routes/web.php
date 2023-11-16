@@ -19,9 +19,11 @@ use App\Http\Controllers\OfflinePaymentController;
 use App\Http\Controllers\Admin\DiscountCodeController;
 use App\Http\Controllers\Admin\EmailController;
 use App\Http\Controllers\Admin\NotifacationController;
+use App\Http\Controllers\Admin\PermissonController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\ProductFeatureController;
 use App\Http\Controllers\Admin\ProductCategoryController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SMSController;
 use App\Http\Controllers\Admin\TicketAdminsController;
 use App\Http\Controllers\Admin\TicketCategoriesController;
@@ -30,6 +32,8 @@ use App\Http\Controllers\Admin\TicketPrioritiesController;
 use App\Http\Controllers\Auth\Customer\LoginRegisterController;
 use App\Http\Controllers\MyTicketsController;
 use App\Models\MyTickets;
+use App\Models\Permission;
+use App\Models\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +57,13 @@ Route::prefix('admin')->name('admin.')->middleware('auth','VerifyAdmin')->group(
     Route::resource('tickets-admins', TicketAdminsController::class);
     Route::resource('tickets-category', TicketCategoriesController::class);
     Route::resource('tickets-priorities', TicketPrioritiesController::class);
+    Route::get('users/setAdmin/{user}', [AdminController::class,'AdminsSet'])->name('users.AdminsSet');
+    Route::get('users/roles/{user}', [AdminController::class,'Roles'])->name('users.Roles');
+    Route::post('users/RolesStore/{user}', [AdminController::class,'RolesStore'])->name('users.RolesStore');
+
+    Route::get('users/Permissions/{user}', [AdminController::class,'Permissions'])->name('users.Permissions');
+    Route::post('users/PermissionsStore/{user}', [AdminController::class,'PermissionsStore'])->name('users.PermissionsStore');
+
     Route::resource('users', AdminController::class);
     Route::get('email/send/{email}', [EmailController::class,'SendEmail'])->name('email.SendEmail');
     Route::get('sms/send/{sms}', [SMSController::class,'SendSMS'])->name('sms.SendSMS');
@@ -77,6 +88,10 @@ Route::prefix('admin')->name('admin.')->middleware('auth','VerifyAdmin')->group(
     Route::resource('product-category', ProductCategoryController::class);
     Route::resource('yicket-category', ProductCategoryController::class);
     Route::resource('discount-code', DiscountCodeController::class);
+    Route::get('role/EditPermission/{role}', [RoleController::class, 'EditPermission'])->name('role.EditPermission');
+    Route::put('role/EditPermission/{role}', [RoleController::class, 'UpdatePermission'])->name('role.UpdatePermission');
+    Route::resource('role', RoleController::class);
+    Route::resource('permission', PermissonController::class);
 });
 
 

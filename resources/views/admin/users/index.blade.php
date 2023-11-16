@@ -28,6 +28,12 @@
                     <td>{{ $user->first_name }}</td>
                     <td>{{ $user->last_name }}</td>
                     <td class="d-flex">
+                        @if ($user->user_type === 1)
+                            <a href="{{ route('admin.users.AdminsSet',$user) }}" class="btn btn-primary btn-sm mr-2">Click to Remove Admin</a>
+                        @else
+                            <a href="{{ route('admin.users.AdminsSet',$user) }}" class="btn btn-primary btn-sm mr-2">Click to Add Admin</a>
+                        @endif
+
                         <a href="{{ route('admin.users.edit',$user) }}" class="btn btn-info btn-sm">Edit</a>
 
                         <form action="{{ route('admin.users.destroy',$user) }}" method="post">

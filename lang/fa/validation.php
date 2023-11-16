@@ -159,5 +159,6 @@ return [
         "user_id"               => "آیدی کاربر",
         "subject"               => "عنوان",
         "status"               => "وضعیت",
+        "permissions"               => "وضعیت",
     ],
 ];
