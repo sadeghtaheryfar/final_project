@@ -5,9 +5,11 @@
     <section class="sidebar-link">
         <a href="{{ route('admin.product-category.index') }}">category</a>
     </section>
-    <section class="sidebar-link">
-        <a href="{{ route('admin.product.index') }}">product</a>
-    </section>
+    @role('admin_tickets')
+        <section class="sidebar-link">
+            <a href="{{ route('admin.product.index') }}">product</a>
+        </section>
+    @endrole
     <section class="sidebar-link">
         <a href="{{ route('admin.discount-code.index') }}">Discount Code</a>
     </section>

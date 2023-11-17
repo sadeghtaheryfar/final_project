@@ -33,4 +33,22 @@ trait HasPermissionTrait{
         }
         return false;
     }
+
+    
+    public function hasPermissionTo($permission)
+    {
+        return $this->hasPermission($permission) || $this->HasPermissionThroughRole($permission);
+    }
+
+
+    public function HasPermissionThroughRole($permission)
+    {
+        foreach($permission->roles as $role)
+        {
+            if($this->roles->contains($role)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

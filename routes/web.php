@@ -50,7 +50,7 @@ Route::get('/', [HomeController::class,'index'])->name('home');
 
 Route::prefix('admin')->name('admin.')->middleware('auth','VerifyAdmin')->group(function () {
     Route::get('/', PannleController::class);
-    Route::resource('product', ProductController::class);
+    Route::resource('product', ProductController::class)->middleware('role:admin_product');
     Route::get('tickets/close', [TicketController::class,'close'])->name('tickets.close');
     Route::get('tickets/open', [TicketController::class,'open'])->name('tickets.open');
     Route::resource('tickets', TicketController::class);

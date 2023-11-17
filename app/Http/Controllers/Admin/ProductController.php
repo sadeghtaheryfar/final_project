@@ -19,7 +19,6 @@ class ProductController extends Controller
     public function index()
     {
         $user = Auth::user();
-        dd($user->hasRole('admin_product'));
         $products = Product::all();
         return view('admin.product.index',compact('products'));
     }
