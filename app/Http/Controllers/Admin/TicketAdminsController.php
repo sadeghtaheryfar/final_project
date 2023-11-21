@@ -34,18 +34,13 @@ class TicketAdminsController extends Controller
     public function store(StoreTicketAdminsRequest $request)
     {
         $inputs = $request->all();
-        $TicketAdmin = TicketAdmins::where("user_id", $request->user_id)->withTrashed()->first();
-        if($TicketAdmin->deleted_at !== null) {
-            $TicketAdmin->deleted_at = null;
-            $TicketAdmin->update();
-        }else if($TicketAdmin->deleted_at === null){
-            if($TicketAdmin){
-                return redirect()->route('admin.tickets-admins.index')->with('swal-error', 'این کاربر قبلا به عنوان ادمین تیکت انتخاب شده است . ');
-                exit();
-            }else{
-                TicketAdmins::create($inputs);
-            }
-        };
+        $TicketAdmin = TicketAdmins::where("user_id", $request->user_id)->first();
+        if ($TicketAdmin != null) {
+            return redirect()->route('admin.tickets-admins.index')->with('swal-error', 'این کاربر قبلا به عنوان ادمین تیکت انتخاب شده است . ');
+            exit();
+        } else {
+            TicketAdmins::create($inputs);
+        }
         return redirect()->route('admin.tickets-admins.index')->with('swal-success', 'ادمین تیکت جدید شما با موفقیت ثبت شد');
     }
 
@@ -65,20 +60,19 @@ class TicketAdminsController extends Controller
         //  این قسمت روت مدل بایندینگ نمی شد مجبور شدم .
         $users = User::all();
         $TicketAdmin = TicketAdmins::find($TicketAdmin);
-        return view('admin.TicketAdmins.edit', compact('TicketAdmin','users'));
+        return view('admin.TicketAdmins.edit', compact('TicketAdmin', 'users'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTicketAdminsRequest $request,$ticketAdmin)
+    public function update(UpdateTicketAdminsRequest $request, $ticketAdmin)
     {
         $inputs = $request->all();
         $ticketAdmin = TicketAdmins::find($ticketAdmin);
-        if($ticketAdmin->user_id == $inputs['user_id'])
-        {
+        if ($ticketAdmin->user_id == $inputs['user_id']) {
             $ticketAdmin->update($inputs);
-        }else{
+        } else {
             return redirect()->route('admin.tickets-admins.index')->with('swal-error', 'این کاربر قبلا به عنوان ادمین تیکت انتخاب شده است . ');
             exit();
         }

@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Services\comparisonProduct;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\CartItem;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
+use App\Models\ComparisonUser;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Services\favouriteProduct;
+use App\Http\Services\comparisonProduct;
 
 class MyProfileController extends Controller
 {
@@ -53,10 +54,9 @@ class MyProfileController extends Controller
         return view('app.myFavorites', compact('favoriteProducts'));
     }
 
-    public function myComparisons(comparisonProduct $ComparisonsProducts)
+    public function myComparisons()
     {
-
-        $ComparisonsProducts = $ComparisonsProducts->ShowComparisonProduct();
+        $ComparisonsProducts = ComparisonUser::where("user_id", Auth::user()->id)->get();
         if($ComparisonsProducts == null || $ComparisonsProducts == "")
         {
             $ComparisonsProducts = [];

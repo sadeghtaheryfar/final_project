@@ -6,19 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Comment extends Model
+class ComparisonUser extends Model
 {
-    use HasFactory, SoftDeletes;
+    protected $table = 'comparison_users';
+    use HasFactory;
 
     protected $guarded = ['id'];
 
     public function Product()
     {
         return $this->belongsTo(Product::class);
-    }
-    
-    public function User()
-    {
-        return $this->belongsTo(User::class);
     }
 }

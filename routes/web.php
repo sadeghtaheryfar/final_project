@@ -8,32 +8,30 @@ use App\Http\Controllers\AdressController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\Admin\SMSController;
 use App\Http\Controllers\MyProfileController;
+use App\Http\Controllers\MyTicketsController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\EmailController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\admin\PannleController;
+use App\Http\Controllers\admin\TicketController;
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\OfflinePaymentController;
-use App\Http\Controllers\Admin\DiscountCodeController;
-use App\Http\Controllers\Admin\EmailController;
-use App\Http\Controllers\Admin\NotifacationController;
 use App\Http\Controllers\Admin\PermissonController;
+use App\Http\Controllers\Admin\DiscountCodeController;
+use App\Http\Controllers\Admin\NotifacationController;
 use App\Http\Controllers\Admin\ProductImageController;
+use App\Http\Controllers\Admin\TicketAdminsController;
 use App\Http\Controllers\Admin\ProductFeatureController;
 use App\Http\Controllers\Admin\ProductCategoryController;
-use App\Http\Controllers\Admin\RoleController;
-use App\Http\Controllers\Admin\SMSController;
-use App\Http\Controllers\Admin\TicketAdminsController;
 use App\Http\Controllers\Admin\TicketCategoriesController;
-use App\Http\Controllers\admin\TicketController;
 use App\Http\Controllers\Admin\TicketPrioritiesController;
 use App\Http\Controllers\Auth\Customer\LoginRegisterController;
-use App\Http\Controllers\MyTicketsController;
-use App\Models\MyTickets;
-use App\Models\Permission;
-use App\Models\Role;
+use App\Http\Controllers\Admin\ComparisonUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,9 +49,9 @@ Route::get('/', [HomeController::class,'index'])->name('home');
 Route::prefix('admin')->name('admin.')->middleware('auth','VerifyAdmin')->group(function () {
     Route::get('/', PannleController::class);
     Route::resource('product', ProductController::class)->middleware('role:admin_product');
-    Route::get('tickets/close', [TicketController::class,'close'])->name('tickets.close');
-    Route::get('tickets/open', [TicketController::class,'open'])->name('tickets.open');
-    Route::resource('tickets', TicketController::class);
+    Route::get('tickets/close', [TicketController::class,'close'])->name('tickets.close')->middleware('role:admin_tickets');
+    Route::get('tickets/open', [TicketController::class,'open'])->name('tickets.open')->middleware('role:admin_tickets');
+    Route::resource('tickets', TicketController::class)->middleware('role:admin_tickets');
     Route::resource('tickets-admins', TicketAdminsController::class);
     Route::resource('tickets-category', TicketCategoriesController::class);
     Route::resource('tickets-priorities', TicketPrioritiesController::class);
@@ -126,8 +124,10 @@ Route::resource('offlinePayment', OfflinePaymentController::class)->middleware('
 
 Route::get('products/AddToFavorite/{product}',[ProductsController::class, 'AddToFavorite'])->name('products.AddToFavorite')->middleware('auth');
 Route::get('products/RemoveFromFavouriteProduct/{product}',[ProductsController::class, 'RemoveFromFavouriteProduct'])->name('products.RemoveFromFavouriteProduct')->middleware('auth');
-Route::get('products/AddToComparison/{product}',[ProductsController::class, 'AddToComparison'])->name('products.AddToComparison')->middleware('auth');
-Route::get('products/RemoveComparisonProduct/{product}',[ProductsController::class, 'RemoveComparisonProduct'])->name('products.RemoveComparisonProduct')->middleware('auth');
+
+Route::get('products/AddToComparison/{product}',[ComparisonUserController::class, 'AddToComparison'])->name('products.AddToComparison')->middleware('auth');
+Route::get('products/RemoveComparisonProduct/{comrasion}',[ComparisonUserController::class, 'RemoveComparisonProduct'])->name('products.RemoveComparisonProduct')->middleware('auth');
+
 Route::get('products/showProductComment/{product}',[ProductsController::class, 'showProductComment'])->name('products.showProductComment')->middleware('auth');
 Route::post('products/storeComment/{product}',[ProductsController::class, 'storeComment'])->name('products.storeComment')->middleware('auth');
 Route::post('products/storeRaiting/{product}',[ProductsController::class, 'storeRaiting'])->name('products.storeRaiting')->middleware('auth');

@@ -112,19 +112,4 @@ class ProductsController extends Controller
         $favouriteProduct->RemoveFromFavouriteProduct($user,$product);
         return back()->with('swal-success', 'محصول با موفقیت از علاقه مندی ها حذف شد . ');
     }
-
-    public function AddToComparison(Product $product,comparisonProduct $comparisonProduct)
-    {    
-        $user = auth()->user();
-        $comparisonProduct->addTOComparisonProduct($user,$product);
-        return back()->with('swal-success', 'محصول با موفقیت به لیست مقایسه اضاف شد . ');
-    }
-
-
-    public function RemoveComparisonProduct(Product $product,comparisonProduct $comparisonProduct)
-    {    
-        $user = auth()->user();
-        $comparisonProduct->RemoveFromComparisonProduct($user,$product);
-        return back()->with('swal-success', 'محصول با موفقیت از لیست مقایسه حذف شد . ');
-    }
 }

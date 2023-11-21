@@ -45,10 +45,10 @@
                                             <td>تنظیمات</td>
                                         </tr>
                                         <tr>
-                                            <th><img width="100" height="100" src="{{ $ComparisonsProduct->image }}">
+                                            <th><img width="100" height="100" src="{{ $ComparisonsProduct->product->image }}">
                                             </th>
-                                            <td>{{ $ComparisonsProduct->price }}</td>
-                                            <td>{{ $ComparisonsProduct->name }}</td>
+                                            <td>{{ $ComparisonsProduct->product->price }}</td>
+                                            <td>{{ $ComparisonsProduct->product->name }}</td>
                                             <td><a class="text-decoration-none cart-delete btn btn-danger text-white"
                                                     href="{{ route('products.RemoveComparisonProduct', $ComparisonsProduct) }}"><i
                                                         class="fa fa-trash-alt"></i> حذف از لیست مقایسه </a></td>

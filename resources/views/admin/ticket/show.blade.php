@@ -195,7 +195,7 @@
                     @endif
                 @endforeach
 
-                <div class="item send">
+                <div class="item recive">
                     <div class="time"><span>{{ jalalidate("$myTicket->created_at") }}</span></div>
                     <div class="message">
                         {!! $myTicket->description !!}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Product_category;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Services\ImageUploadService;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Notifications\AddProduct;
 
 class ProductController extends Controller
 {
@@ -20,6 +22,11 @@ class ProductController extends Controller
     {
         $user = Auth::user();
         $products = Product::all();
+        if(!$user->can('show_prudoct')){
+            abort(403);
+            exit();
+        }
+
         return view('admin.product.index',compact('products'));
     }
 
@@ -28,8 +35,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = ProductCategory::all();
+        $user = Auth::user();
+        if(!$user->can('create_product')){
+            abort(403);
+            exit();
+        }
         
+        $categories = ProductCategory::all();
         return view('admin.product.create',compact('categories'));
     }
 
@@ -38,6 +50,12 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request, ImageUploadService $imageUploadService)
     {
+        $user = Auth::user();
+        if(!$user->can('create_product')){
+            abort(403);
+            exit();
+        }
+
         $inputs = $request->all();
         $realTime = substr($inputs['published_at'], 0, 10);
         $inputs['published_at'] = date('Y-m-d H:i:s', (int)$realTime);
@@ -51,6 +69,13 @@ class ProductController extends Controller
         }
 
         Product::create($inputs);
+        $details = [
+            'message' => 'یک محصول جدید با موفقیت توسط' . $user->email . " - " . $user->mobile . " " . 'ثبت شد .',
+        ];
+        $adminUsers = User::all()->where('user_type', 1);
+        foreach ($adminUsers as $adminUser) {
+            $adminUser->notify(new AddProduct($details));
+        }
         return to_route('admin.product.index')->with('swal-success', 'محصول با موفقیت ساخته شد');
     }
 
@@ -67,6 +92,12 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        $user = Auth::user();
+        if(!$user->can('edit_product')){
+            abort(403);
+            exit();
+        }
+
         $categories = ProductCategory::all();
         
         return view('admin.product.edit',compact('categories','product'));
@@ -77,6 +108,12 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product, ImageUploadService $imageUploadService)
     {
+        $user = Auth::user();
+        if(!$user->can('edit_product')){
+            abort(403);
+            exit();
+        }
+
         $inputs = $request->all();
         $realTime = substr($inputs['published_at'], 0, 10);
         $inputs['published_at'] = date('Y-m-d H:i:s', (int)$realTime);
@@ -101,6 +138,11 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        $user = Auth::user();
+        if(!$user->can('delete_prudoct')){
+            abort(403);
+            exit();
+        }
         $product->delete();
         return back()->with('swal-success', 'محصول با موفقیت حذف شد');
     }

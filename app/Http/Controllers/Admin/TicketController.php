@@ -21,12 +21,24 @@ class TicketController extends Controller
      */
     public function open()
     {
+        $user = Auth::user();
+        if(!$user->can('show_ticket')){
+            abort(403);
+            exit();
+        }
+        
         $tickets = Tickets::where("ticket_id",null)->where("status",1)->get()->sortDesc();
         return view('admin.ticket.index',compact('tickets'));
     }
 
     public function close()
     {
+        $user = Auth::user();
+        if(!$user->can('show_ticket')){
+            abort(403);
+            exit();
+        }
+
         $tickets = Tickets::where("ticket_id",null)->where("status",0)->get()->sortDesc();
         return view('admin.ticket.index',compact('tickets'));
     }
@@ -34,6 +46,12 @@ class TicketController extends Controller
 
     public function index()
     {
+        $user = Auth::user();
+        if(!$user->can('show_ticket')){
+            abort(403);
+            exit();
+        }
+
         $tickets = Tickets::where("ticket_id",null)->get()->sortDesc();
         foreach($tickets as $ticket)
         {
@@ -48,6 +66,12 @@ class TicketController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
+        if(!$user->can('create_ticket')){
+            abort(403);
+            exit();
+        }
+
         $users = User::all();
         $categories = TicketCategory::all();
         $priorities = TicketPriorities::all();
@@ -58,8 +82,14 @@ class TicketController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreMyTicketsRequest $request, ImageUploadService $imageUploadService)
-    {$inputs = $request->all();
+    {
         $user = Auth::user();
+        if(!$user->can('create_ticket')){
+            abort(403);
+            exit();
+        }
+
+        $inputs = $request->all();
         $inputs['user_id'] = $user->id;
         $ticket = Tickets::create($inputs);
         if ($request->hasFile('file')) {
@@ -81,6 +111,12 @@ class TicketController extends Controller
      */
     public function show(Tickets $ticket)
     {
+        $user = Auth::user();
+        if(!$user->can('show_prudoct')){
+            abort(403);
+            exit();
+        }
+
         $TicketsAnswear = Tickets::where("ticket_id", $ticket->id)->get()->sortDesc();
         $myTicket = $ticket;
         $categories = TicketCategory::all();
@@ -102,14 +138,20 @@ class TicketController extends Controller
      */
     public function update(UpdateMyTicketsRequest $request, Tickets $ticket, ImageUploadService $imageUploadService)
     {
+        $user = Auth::user();
+        if(!$user->can('answer_ticket')){
+            abort(403);
+            exit();
+        }
+
         $myTicket = $ticket;
         $inputs = $request->all();
-        $user = Auth::user();
         $inputs['subject'] = $myTicket->subject;
         $inputs['reference_id'] = $user->id;
         $inputs['ticket_id'] = $myTicket->id;
         $inputs['category_id'] = $myTicket->category_id;
         $inputs['priority_id'] = $myTicket->priority_id;
+        // dd($inputs);
         $NewTicket = Tickets::create($inputs);
         $myTicket->status = $inputs['status'];
         $myTicket->update();
@@ -132,8 +174,13 @@ class TicketController extends Controller
      */
     public function destroy(Tickets $ticket)
     {
-        $ticket->delete();
+        $user = Auth::user();
+        if(!$user->can('answer_ticket')){
+            abort(403);
+            exit();
+        }
 
+        $ticket->delete();
         return back()->with('swal-success', 'تیکیت با موفقیت حذف شد .');
     }
 }

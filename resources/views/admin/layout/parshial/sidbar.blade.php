@@ -46,9 +46,11 @@
     <section class="sidebar-link">
         <a href="{{ route('admin.tickets-category.index') }}">Ticket Categories</a>
     </section>
+    @role('admin_tickets')
     <section class="sidebar-link">
         <a href="{{ route('admin.tickets.index') }}">Tickets</a>
     </section>
+    @endrole
     <section class="sidebar-link">
         <a href="{{ route('admin.role.index') }}">Role</a>
     </section>

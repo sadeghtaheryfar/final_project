@@ -32,7 +32,7 @@
                     <tr>
                         <td>{{ $TicketAdmin->id }}</td>
                         <td>{{ $TicketAdmin->user->email . " -  " . $TicketAdmin->user->mobile }}</td>
-                        <td>{{ ($TicketAdmin->status === 0) ?"disable" : "enable" }}</td>
+                        <td>{{ ($TicketAdmin->status === 1) ?"disable" : "enable" }}</td>
                         <td>
                             <a role="button" href="{{ route('admin.tickets-admins.edit', $TicketAdmin->id) }}"
                                 class="btn btn-sm btn-info my-0 mx-1 text-white">Edit</a>

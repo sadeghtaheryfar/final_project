@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TicketAdmins extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory;
 
     protected $guarded = ['id','created_at','updated_at'];
 
